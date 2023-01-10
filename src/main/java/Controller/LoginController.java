@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.DatabaseUser;
 import Model.User;
 import Utilities.DataBaseConnection;
 import com.example.wilkinson_c195.Main;
@@ -38,9 +39,9 @@ public class LoginController implements Initializable {
     @FXML
     private Button LogInButton;
     @FXML
-    private Button EnglishLabel;
+    private Label EnglishLabel;
     @FXML
-    private Button FrenchLabel;
+    private Label FrenchLabel;
 
     private static User user;
     public static User getUser(){
@@ -51,9 +52,9 @@ public class LoginController implements Initializable {
     public void OnActionLogin(ActionEvent event) throws IOException {
         String username = UsernameTextField.getText();
         String password = PasswordTextField.getText();
-        boolean validation = login(username, password);
+        boolean validation = DatabaseUser.login(username, password);
         if(validation){
-            ((Node) event.getSource()).getScene().getWindow();
+            ((Node) event.getSource()).getScene().getWindow().hide();
             Stage stage = new Stage();
             Parent login = FXMLLoader.load(Main.class.getResource("MainScreen.fxml"));
             Scene scene = new Scene(login);
@@ -68,55 +69,21 @@ public class LoginController implements Initializable {
         }
     }
 
-    /**
-     * get Locales
-     * @return
-     */
-    public static Locale getLocale(){
-        return Locale.getDefault();
-    }
-
-    Locale[] programLocales = {
-            Locale.ENGLISH,
-            Locale.FRENCH
-    };
-
-    //set up locale later
-    /**
-    public void setLanguageLabels(ResourceBundle language){
-        Locale location = getLocale();
-        //Setting English locale
-        language = ResourceBundle.getBundle("")
-    }
-    **/
 
 
-    public static boolean login(String username, String password) {
-        try{
-            Statement statement = DataBaseConnection.getConnection().createStatement();
-            String query = "Select * FROM user WHERE userName= '" + username + "AND password = '" +password + "'";
-            ResultSet resultSet = statement.executeQuery(query);
-            if(resultSet.next()){
-                user = new User();
-                user.setUsername();resultSet.getString("UserName");
-                statement.close();
-                Utilities.Logger.log(username, true);
-                return true;
-            }else {
-                Utilities.Logger.log(username,false);
-                return false;
-            }
-        }catch (SQLException q){
-            System.out.println("Error with database :" + q.getMessage());
-            return false;
-        }
-    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+   // Locale locale = Locale.getDefault();
+    //resourceBundle = ResourceBundle.getBundle("Languages/login",locale);
+    //UsernameLabel.setText(resourceBundle.getString("username"));
+    //PasswordLabel.setText(resourceBundle.getString("password"));
+    //LogInButton.setText(resourceBundle.getString("login"));
 
 
     }
+
 
 
 }

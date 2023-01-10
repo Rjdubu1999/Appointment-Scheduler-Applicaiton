@@ -1,9 +1,6 @@
 package Utilities;
 
-import java.sql.Connection;
-import java.sql.Driver;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  * @Author Ryan Wilkinson
@@ -14,42 +11,35 @@ import java.sql.SQLException;
  * Creating class to connect MySQL database to project
  */
 public class DataBaseConnection {
+    private static final String protocol = "jdbc";
+    private static final String vendor = ":mysql:";
+    private static final String location = "//localhost/";
+    private static final String databaseName = "client_schedule";
+    private static final String jdbcUrl = protocol + vendor + location + databaseName + "?connectionTimeZone = SERVER"; // LOCAL
+    private static final String driver = "com.mysql.cj.jdbc.Driver"; // Driver reference
+    private static final String userName = "sqlUser"; // Username
+    private static String password = "Passw0rd!"; // Password
+    public static Connection connection;  // Connection Interface
 
-    private static final String DataBaseName = "JavaConnection";
-    private static final String DataBaseURL = "jdbc:mysql://localhost:3306/mysql";
-    private static final String DataBaseUsername = "root@localhost";
-    private static final String DataBasePassword = "********!";
-    private static final String DataBaseDriver = "com.mysql.cj.jdbc.Driver";
+    public static void openConnection() {
+        try {
+            Class.forName(driver); // Locate Driver
+            connection = DriverManager.getConnection(jdbcUrl, userName, password); // Reference Connection object
+            System.out.println("Connection successful!");
+        } catch (Exception e) {
+            System.out.println("Error:" + e.getMessage());
+        }
+    }
 
-    private static Connection connection;
-     public DataBaseConnection(){}
-
-
-public static void makeConnection() {
-         try{
-             Class.forName(DataBaseDriver);
-             connection = DriverManager.getConnection(DataBaseURL,DataBaseUsername,DataBasePassword);
-             System.out.println("Connected to DataBase");
-
-         }catch (ClassNotFoundException classNotFoundException){
-             System.out.println("Class not found" + classNotFoundException.getMessage());
-         }catch (SQLException sqlException){
-             System.out.println("SQL Exception " + sqlException.getMessage());
-             System.out.println("SQL State " + sqlException.getMessage() );
-             System.out.println("Error Code : " + sqlException.getErrorCode());
-         }
-}
-public static java.sql.Connection getConnection(){
-    return connection;
-}
-
-public static void closeConnection(){
-     try{
-     connection.close();
-     System.out.println("Connection to Database is closed");
-
-     }catch (SQLException sqlException){
-         System.out.println("SQL Exception: " + sqlException.getMessage());
-     }
-}
+    public static void closeConnection() {
+        try {
+            connection.close();
+            System.out.println("Connection closed!");
+        } catch (Exception e) {
+            System.out.println("Error:" + e.getMessage());
+        }
+    }
+    public static java.sql.Connection getConnection(){
+        return connection;
+    }
 }
