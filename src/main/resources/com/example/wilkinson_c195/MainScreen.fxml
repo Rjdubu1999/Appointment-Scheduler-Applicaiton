@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="335.0" prefWidth="497.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="140.0" layoutY="60.0" text="Appointment Scheduler">
+         <font>
+            <Font name="Calibri" size="24.0" />
+         </font>
+      </Label>
+      <Button layoutX="155.0" layoutY="115.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="200.0" style="-fx-background-radius: 20;" text="Appointments">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="155.0" layoutY="150.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="200.0" style="-fx-background-radius: 20;" text="Customer">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="155.0" layoutY="185.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="200.0" style="-fx-background-radius: 20;" text="Reports">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="155.0" layoutY="220.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="200.0" style="-fx-background-radius: 20;" text="Open Log">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

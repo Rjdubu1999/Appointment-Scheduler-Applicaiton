@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<AnchorPane prefHeight="459.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainCustomerController">
+   <children>
+      <Label layoutX="258.0" layoutY="28.0" text="Customers">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TableView layoutX="131.0" layoutY="71.0" prefHeight="297.0" prefWidth="372.0">
+        <columns>
+          <TableColumn prefWidth="112.0" text="ID" />
+          <TableColumn prefWidth="259.0" text="Customer" />
+        </columns>
+      </TableView>
+      <ButtonBar layoutX="129.0" layoutY="387.0" prefHeight="40.0" prefWidth="353.0">
+        <buttons>
+          <Button mnemonicParsing="false" style="-fx-background-radius: 20;" text="Add" />
+            <Button mnemonicParsing="false" style="-fx-background-radius: 20;" text="Modify" />
+            <Button mnemonicParsing="false" style="-fx-background-radius: 20;" text="Delete" />
+            <Button mnemonicParsing="false" style="-fx-background-radius: 20;" text="Back" />
+        </buttons>
+      </ButtonBar>
+   </children>
+</AnchorPane>
