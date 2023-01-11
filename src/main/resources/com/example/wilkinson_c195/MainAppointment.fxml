@@ -1,33 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="590.0" prefWidth="676.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainAppointmentController">
+<AnchorPane prefHeight="590.0" prefWidth="676.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainAppointmentController">
     <children>
-        <TableView layoutX="37.0" layoutY="64.0" prefHeight="440.0" prefWidth="200.0">
+        <TableView fx:id="CustomerTableView" layoutX="37.0" layoutY="64.0" prefHeight="440.0" prefWidth="200.0">
             <columns>
-                <TableColumn prefWidth="75.0" text="ID" />
-                <TableColumn prefWidth="124.0" text="Customer" />
+                <TableColumn fx:id="CustomerIDColumn" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="CustomerColumn" prefWidth="124.0" text="Customer" />
             </columns>
         </TableView>
         <TabPane layoutX="248.0" layoutY="64.0" prefHeight="440.0" prefWidth="402.0" tabClosingPolicy="UNAVAILABLE">
             <tabs>
-                <Tab text="Monthly Appointments">
+                <Tab fx:id="MonthlyTab" text="Monthly Appointments">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <TableView layoutY="79.0" prefHeight="355.0" prefWidth="402.0">
+                                <TableView fx:id="MonthlyApptTableView" layoutY="79.0" prefHeight="355.0" prefWidth="402.0">
                                     <columns>
-                                        <TableColumn prefWidth="82.0" text="Description" />
-                                        <TableColumn prefWidth="76.0" text="Contact" />
-                                        <TableColumn prefWidth="75.0" text="Location" />
-                                        <TableColumn prefWidth="82.0" text="Start" />
-                                        <TableColumn prefWidth="86.0" text="End" />
+                                        <TableColumn fx:id="MonthlyDescriptionCol" prefWidth="82.0" text="Description" />
+                                        <TableColumn fx:id="MonthlyContactCol" prefWidth="76.0" text="Contact" />
+                                        <TableColumn fx:id="MonthlyLocationCol" prefWidth="75.0" text="Location" />
+                                        <TableColumn fx:id="MonthlyStartCol" prefWidth="82.0" text="Start" />
+                                        <TableColumn fx:id="MonthlyEndCol" prefWidth="86.0" text="End" />
                                     </columns>
                                 </TableView>
                             </children>
@@ -35,16 +32,16 @@
                     </content>
 
                 </Tab>
-                <Tab text="Weekly Appointments">
+                <Tab fx:id="WeeklyTab" text="Weekly Appointments">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <TableView layoutY="77.0" prefHeight="355.0" prefWidth="402.0">
+                                <TableView fx:id="WeeklyTableView" layoutY="77.0" prefHeight="355.0" prefWidth="402.0">
                                     <columns>
-                                        <TableColumn prefWidth="102.0" text="Description" />
-                                        <TableColumn prefWidth="71.0" text="Contact" />
+                                        <TableColumn fx:id="WeeklyDescriptionCol" prefWidth="102.0" text="Description" />
+                                        <TableColumn fx:id="WeeklyContactCol" prefWidth="71.0" text="Contact" />
                                         <TableColumn prefWidth="74.0" text="Location" />
-                                        <TableColumn prefWidth="79.0" text="Start" />
+                                        <TableColumn fx:id="WeeklyStartCol" prefWidth="79.0" text="Start" />
                                         <TableColumn prefWidth="75.0" text="End" />
                                     </columns>
                                 </TableView>

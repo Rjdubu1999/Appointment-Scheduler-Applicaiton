@@ -17,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -83,7 +84,7 @@ public class LoginController implements Initializable {
     };
     public void setLoginInfo(ResourceBundle languages) {
         Locale locale = getCurrentLocale();
-        languages = ResourceBundle.getBundle("main.Languages/languages", locale);
+        languages = ResourceBundle.getBundle("resources/com.example/wilkinson_c195/Languages", locale);
         UsernameLabel.setText(languages.getString("username"));
         PasswordLabel.setText(languages.getString("password"));
         LogInButton.setText(languages.getString("login"));
@@ -96,6 +97,7 @@ public class LoginController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle languages) {
+
     try{
         setLoginInfo(languages);
     }catch (Exception e){
