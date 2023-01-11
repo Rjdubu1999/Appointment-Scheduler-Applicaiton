@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0764dce-d9b8-485c-af9e-17f70aa847e5" name="Changes" comment="&#10;going to loop back to fixing resource bundle error, set up main screen controller to open views, set up methods in appointment class">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/DataBaseAppointment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MainAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MainAppointmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/wilkinson_c195/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/wilkinson_c195/Main.java" afterDir="false" />
+    <list default="true" id="c0764dce-d9b8-485c-af9e-17f70aa847e5" name="Changes" comment="&#10;finished customer model.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/DataBaseAppointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/DataBaseAppointment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +100,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673463923518</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="&#10;finished customer model.">
+      <created>1673464914793</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1673464914793</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -122,6 +127,7 @@
     <MESSAGE value="Data Connection is successful on project. MainScreen opens up login page" />
     <MESSAGE value="&#10;trying to find correct file path to set up resource bundle for login page" />
     <MESSAGE value="&#10;going to loop back to fixing resource bundle error, set up main screen controller to open views, set up methods in appointment class" />
-    <option name="LAST_COMMIT_MESSAGE" value="&#10;going to loop back to fixing resource bundle error, set up main screen controller to open views, set up methods in appointment class" />
+    <MESSAGE value="&#10;finished customer model." />
+    <option name="LAST_COMMIT_MESSAGE" value="&#10;finished customer model." />
   </component>
 </project>
