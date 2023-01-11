@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0764dce-d9b8-485c-af9e-17f70aa847e5" name="Changes" comment="Creating Scheduler Application.&#10;Have created the GUI so far and set up the MySQL database to the application.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/DatabaseUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+    <list default="true" id="c0764dce-d9b8-485c-af9e-17f70aa847e5" name="Changes" comment="Data Connection is successful on project. MainScreen opens up login page">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Languages/languages.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Languages/languages_en.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Languages/languages_fr.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/DataBaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/DataBaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/wilkinson_c195/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/wilkinson_c195/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MainScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MainScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/Login.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +49,12 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\LabUser\IdeaProjects\Appointment-Scheduler-Applicaiton\src\main\java\Languages" />
+      <recent name="C:\Users\LabUser\IdeaProjects\Appointment-Scheduler-Applicaiton\src\main\resources\com\example\wilkinson_c195" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.example.wilkinson_c195.Main" />
@@ -74,7 +80,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673309025632</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Data Connection is successful on project. MainScreen opens up login page">
+      <created>1673375658902</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1673375658903</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -87,9 +100,11 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Creating Scheduler Application.&#10;Have created the GUI so far and set up the MySQL database to the application." />
-    <option name="LAST_COMMIT_MESSAGE" value="Creating Scheduler Application.&#10;Have created the GUI so far and set up the MySQL database to the application." />
+    <MESSAGE value="Data Connection is successful on project. MainScreen opens up login page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Data Connection is successful on project. MainScreen opens up login page" />
   </component>
 </project>

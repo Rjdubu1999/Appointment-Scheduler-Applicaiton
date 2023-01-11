@@ -4,28 +4,32 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="325.0" prefWidth="499.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
+<AnchorPane prefHeight="437.0" prefWidth="499.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
    <children>
       <Label layoutX="121.0" layoutY="30.0" text="Scheduler Application">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="PasswordTextField" layoutX="250.0" layoutY="165.0" promptText="Enter Password" />
-      <Label fx:id="UsernameLabel" layoutX="125.0" layoutY="110.0" text="Username">
+      <PasswordField fx:id="PasswordTextField" layoutX="250.0" layoutY="165.0" />
+      <Label fx:id="UsernameLabel" layoutX="125.0" layoutY="110.0">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="PasswordLabel" layoutX="125.0" layoutY="165.0" text="Password">
+      <Label fx:id="PasswordLabel" layoutX="125.0" layoutY="165.0">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="UsernameTextField" layoutX="250.0" layoutY="110.0" promptText="Enter Username" />
-      <Button fx:id="LogInButton" layoutX="197.0" layoutY="219.0" mnemonicParsing="false" onAction="#OnActionLogin" style="-fx-background-radius: 20;" text="Log in" />
-      <Label fx:id="EnglishLabel" layoutX="37.0" layoutY="270.0" mnemonicParsing="false"  style="-fx-background-radius: 20;" text="English" />
-      <Label fx:id="FrenchLabel" layoutX="410.0" layoutY="270.0" mnemonicParsing="false"  style="-fx-background-radius: 20;" text="French" />
+      <TextField fx:id="UsernameTextField" layoutX="250.0" layoutY="110.0" />
+      <Button fx:id="LogInButton" layoutX="197.0" layoutY="219.0" mnemonicParsing="false" onAction="#OnActionLogin" style="-fx-background-radius: 20;" />
+      <AnchorPane layoutX="24.0" layoutY="253.0" prefHeight="162.0" prefWidth="463.0">
+         <children>
+            <Label fx:id="AnchorPaneLanguage" layoutX="18.0" layoutY="122.0" mnemonicParsing="false" style="-fx-background-radius: 20;" />
+         </children>
+      </AnchorPane>
+      <Label fx:id="AnchorPaneMessage" layoutX="37.0" layoutY="270.0" mnemonicParsing="false" style="-fx-background-radius: 20;" />
      
    </children>
 </AnchorPane>

@@ -23,11 +23,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Locale;
+import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
-public class LoginController implements Initializable {
 
+
+public class LoginController implements Initializable {
+    @FXML
+    private Label AnchorPaneLanguage;
+    @FXML
+    private Label AnchorPaneMessage;
     @FXML
     private TextField PasswordTextField;
     @FXML
@@ -38,10 +44,10 @@ public class LoginController implements Initializable {
     private TextField UsernameTextField;
     @FXML
     private Button LogInButton;
-    @FXML
-    private Label EnglishLabel;
-    @FXML
-    private Label FrenchLabel;
+
+    private String loginErrorTitle;
+    private String loginErrorHeader;
+    private String loginErrorText;
 
     private static User user;
     public static User getUser(){
@@ -68,19 +74,33 @@ public class LoginController implements Initializable {
             alert.showAndWait();
         }
     }
+    public static Locale getCurrentLocale(){
+        return Locale.getDefault();
+    }
+    Locale[] applicationLocales = {
+            Locale.ENGLISH,
+            Locale.FRENCH
+    };
+    public void setLoginInfo(ResourceBundle languages) {
+        Locale locale = getCurrentLocale();
+        languages = ResourceBundle.getBundle("main.Languages/languages", locale);
+        UsernameLabel.setText(languages.getString("username"));
+        PasswordLabel.setText(languages.getString("password"));
+        LogInButton.setText(languages.getString("login"));
+        AnchorPaneMessage.setText(languages.getString("message"));
+        AnchorPaneLanguage.setText(languages.getString("language"));
+        loginErrorTitle = languages.getString("errortitle");
+        loginErrorHeader = languages.getString("errorheader");
+        loginErrorText = languages.getString("errortext");
 
-
-
-
-
+    }
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-   // Locale locale = Locale.getDefault();
-    //resourceBundle = ResourceBundle.getBundle("Languages/login",locale);
-    //UsernameLabel.setText(resourceBundle.getString("username"));
-    //PasswordLabel.setText(resourceBundle.getString("password"));
-    //LogInButton.setText(resourceBundle.getString("login"));
-
+    public void initialize(URL url, ResourceBundle languages) {
+    try{
+        setLoginInfo(languages);
+    }catch (Exception e){
+        System.out.println("Error " + e.getMessage());
+    }
 
     }
 
