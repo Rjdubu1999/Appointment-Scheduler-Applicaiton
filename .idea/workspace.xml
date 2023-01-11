@@ -4,21 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0764dce-d9b8-485c-af9e-17f70aa847e5" name="Changes" comment="&#10;trying to find correct file path to set up resource bundle for login page">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Appointment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Languages.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Languages_en_US.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Languages_fr.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/LoginController.java" afterDir="false" />
+    <list default="true" id="c0764dce-d9b8-485c-af9e-17f70aa847e5" name="Changes" comment="&#10;going to loop back to fixing resource bundle error, set up main screen controller to open views, set up methods in appointment class">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/DataBaseAppointment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MainAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MainAppointmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MainScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MainScreenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Languages/languages.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Languages/languages_en.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Languages/languages_fr.properties" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/wilkinson_c195/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/wilkinson_c195/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/MainAppointment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/MainAppointment.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/MainScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/MainScreen.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +95,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673408095268</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="&#10;going to loop back to fixing resource bundle error, set up main screen controller to open views, set up methods in appointment class">
+      <created>1673463923518</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1673463923518</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -124,6 +121,7 @@
     <MESSAGE value="Creating Scheduler Application.&#10;Have created the GUI so far and set up the MySQL database to the application." />
     <MESSAGE value="Data Connection is successful on project. MainScreen opens up login page" />
     <MESSAGE value="&#10;trying to find correct file path to set up resource bundle for login page" />
-    <option name="LAST_COMMIT_MESSAGE" value="&#10;trying to find correct file path to set up resource bundle for login page" />
+    <MESSAGE value="&#10;going to loop back to fixing resource bundle error, set up main screen controller to open views, set up methods in appointment class" />
+    <option name="LAST_COMMIT_MESSAGE" value="&#10;going to loop back to fixing resource bundle error, set up main screen controller to open views, set up methods in appointment class" />
   </component>
 </project>

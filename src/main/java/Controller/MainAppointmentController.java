@@ -1,11 +1,15 @@
 package Controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
-public class MainAppointmentController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class MainAppointmentController implements Initializable {
 
     @FXML private
     TableView CustomerTableView;
@@ -22,4 +26,9 @@ public class MainAppointmentController {
     @FXML private TableColumn WeeklyDescriptionCol;
     @FXML private TableColumn WeeklyContactCol;
     @FXML private TableColumn WeeklyStartCol;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }
