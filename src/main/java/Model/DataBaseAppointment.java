@@ -153,5 +153,37 @@ public class DataBaseAppointment {
     }
     return false;
     }
+
+    public static boolean deleteAppointment(int id){
+        try{
+            Statement statement = DataBaseConnection.getConnection().createStatement();
+            String query = "DELETE FROM appointment WHERE appointmentId = " + id;
+            int update = statement.executeUpdate(query);
+            if(update == 1){
+                return true;
+            }
+        }catch (SQLException sqlException){
+            System.out.println("Exception: " + sqlException.getMessage());
+        }
+        return false;
+    }
+    public static boolean updateAppointment(int id, String type, String contact, String location, String date, String time){
+        String title = type.split(":")[0];
+        String description = type.split(":")[1];
+        String timestampStart = createTimeStamp(date, time, location, true);
+        String timeStampEnd = createTimeStamp(date, time, location, false);
+        try{
+            Statement statement = DataBaseConnection.getConnection().createStatement();
+            String query = "UPDATE appointment SET title'" + title + "', description='" + description + "', contact='" + contact + "', location='" + location + "', timeStampStart='" + timestampStart + "', timeStampEnd='" + timeStampEnd + "' WHERE " + "appointmentId= '" + id + "'";
+            int update = statement.executeUpdate(query);
+            if(update == 1){
+                return true;
+            }
+        }catch (SQLException sqlException){
+            System.out.println("Exception: " + sqlException.getMessage());
+        }
+        return false;
+    }
+
 }
 

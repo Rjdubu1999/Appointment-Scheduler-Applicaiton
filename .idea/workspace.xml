@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0764dce-d9b8-485c-af9e-17f70aa847e5" name="Changes" comment="&#10;finished customer model.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="c0764dce-d9b8-485c-af9e-17f70aa847e5" name="Changes" comment="&#10;finishing database model for appointments">
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/DataBaseAppointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/DataBaseAppointment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -107,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673464914793</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="&#10;finishing database model for appointments">
+      <created>1673477792198</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1673477792198</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -128,6 +134,7 @@
     <MESSAGE value="&#10;trying to find correct file path to set up resource bundle for login page" />
     <MESSAGE value="&#10;going to loop back to fixing resource bundle error, set up main screen controller to open views, set up methods in appointment class" />
     <MESSAGE value="&#10;finished customer model." />
-    <option name="LAST_COMMIT_MESSAGE" value="&#10;finished customer model." />
+    <MESSAGE value="&#10;finishing database model for appointments" />
+    <option name="LAST_COMMIT_MESSAGE" value="&#10;finishing database model for appointments" />
   </component>
 </project>
