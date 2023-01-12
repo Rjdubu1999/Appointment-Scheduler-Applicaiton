@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="590.0" prefWidth="676.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainAppointmentController">
+<AnchorPane fx:id="AppointmentAnchorMain" prefHeight="590.0" prefWidth="676.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainAppointmentController">
     <children>
         <TableView fx:id="CustomerTableView" layoutX="37.0" layoutY="64.0" prefHeight="440.0" prefWidth="200.0">
             <columns>
@@ -60,9 +60,9 @@
             <font>
                 <Font name="System Bold" size="14.0" />
             </font></Label>
-        <Button layoutX="37.0" layoutY="535.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="164.0" style="-fx-background-radius: 20;" text="Add New Appointment" />
-        <Button layoutX="216.0" layoutY="535.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="164.0" style="-fx-background-radius: 20;" text="Modify Appointment" />
-        <Button layoutX="407.0" layoutY="535.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="164.0" style="-fx-background-radius: 20;" text="Delete Appointment" />
-        <Button layoutX="587.0" layoutY="535.0" mnemonicParsing="false" style="-fx-background-radius: 20;" text="Back" />
+        <Button layoutX="37.0" layoutY="535.0" mnemonicParsing="false" onAction="#onActionAddAppointment" prefHeight="25.0" prefWidth="164.0" style="-fx-background-radius: 20;" text="Add New Appointment" />
+        <Button layoutX="216.0" layoutY="535.0" mnemonicParsing="false" onAction="#onActionModifyAppointment" prefHeight="25.0" prefWidth="164.0" style="-fx-background-radius: 20;" text="Modify Appointment" />
+        <Button layoutX="407.0" layoutY="535.0" mnemonicParsing="false" onAction="#onActionDeleteAppointment" prefHeight="25.0" prefWidth="164.0" style="-fx-background-radius: 20;" text="Delete Appointment" />
+        <Button layoutX="587.0" layoutY="535.0" mnemonicParsing="false" onAction="#onActionBack" style="-fx-background-radius: 20;" text="Back" />
     </children>
 </AnchorPane>
