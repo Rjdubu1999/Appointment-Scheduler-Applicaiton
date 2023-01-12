@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0764dce-d9b8-485c-af9e-17f70aa847e5" name="Changes" comment="&#10;finished database model for appointments">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/DataBaseCustomer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/wilkinson_c195/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/wilkinson_c195/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="c0764dce-d9b8-485c-af9e-17f70aa847e5" name="Changes" comment="&#10;models are complete" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -122,7 +118,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673481664550</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="&#10;models are complete">
+      <created>1673490656274</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1673490656274</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -145,6 +148,7 @@
     <MESSAGE value="&#10;finished customer model." />
     <MESSAGE value="&#10;finishing database model for appointments" />
     <MESSAGE value="&#10;finished database model for appointments" />
-    <option name="LAST_COMMIT_MESSAGE" value="&#10;finished database model for appointments" />
+    <MESSAGE value="&#10;models are complete" />
+    <option name="LAST_COMMIT_MESSAGE" value="&#10;models are complete" />
   </component>
 </project>
