@@ -18,7 +18,7 @@ import java.sql.SQLException;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Mainscreen.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 550, 375);
         stage.setTitle("Scheduler Application C195");
         stage.setScene(scene);
