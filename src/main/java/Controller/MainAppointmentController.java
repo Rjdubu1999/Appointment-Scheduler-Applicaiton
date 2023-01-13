@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Appointment;
 import Model.Customer;
+import Model.DataBaseAppointment;
 import com.example.wilkinson_c195.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -43,7 +44,7 @@ public class MainAppointmentController implements Initializable {
 
     }
 
-    public void onActionAddAppointment(ActionEvent actionEvent) throws IOException {
+    public void onActionAddAppointment() {
         if(CustomerTableView.getSelectionModel().getSelectedItem() != null){
             selectedCustomer = CustomerTableView.getSelectionModel().getSelectedItem();
 
@@ -53,7 +54,7 @@ public class MainAppointmentController implements Initializable {
         Dialog<ButtonType> dialog = new Dialog();
         dialog.initOwner(AppointmentAnchorMain.getScene().getWindow());
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(Main.class.getResource("AddAppointment.fxml"));
+        fxmlLoader.setLocation(getClass().getResource("AddAppointment.fxml"));
         try{
             dialog.getDialogPane().setContent(fxmlLoader.load());
         }catch (IOException ioException){
@@ -62,10 +63,27 @@ public class MainAppointmentController implements Initializable {
         ButtonType save = new ButtonType("Save", ButtonBar.ButtonData.OK_DONE);
         dialog.getDialogPane().getButtonTypes().add(save);
         dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
-
         AddAppointmentController addAppointmentController = fxmlLoader.getController();
-        //add appointment controller finish so i can add it
-        addAppointmentController
+        addAppointmentController.populateCustomerNameColumn(selectedCustomer.getCustomerName());
+        dialog.showAndWait().ifPresent((response -> {
+            if(response == save){
+                if(addAppointmentController.handleAddAppointment(selectedCustomer.getCustomerID())){
+                    MonthlyApptTableView.setItems(DataBaseAppointment.getMonthlyAppointments(selectedCustomer.getCustomerID()));
+                    WeeklyTableView.setItems(DataBaseAppointment.getWeeklyAppointments(selectedCustomer.getCustomerID()));
+                }else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("Error Adding Appointment");
+                    alert.setContentText(addAppointmentController.displayErrorMessages());
+                    alert.showAndWait().ifPresent((secondResponse ->{
+                        if(secondResponse == ButtonType.OK){
+                            onActionAddAppointment();
+                        }
+                    }));
+                }
+            }
+        }));
+
     }
 
     public void onActionModifyAppointment(ActionEvent actionEvent) {

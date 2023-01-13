@@ -41,7 +41,7 @@ public class MainScreenController implements Initializable {
     public void onActionCustomerScreen(ActionEvent actionEvent) throws IOException {
         try{
             Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("MainCustomer.fxml"));
+            Parent root = FXMLLoader.load(Main.class.getResource("MainCustomer.fxml"));
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();

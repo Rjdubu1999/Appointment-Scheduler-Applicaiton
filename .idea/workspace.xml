@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0764dce-d9b8-485c-af9e-17f70aa847e5" name="Changes" comment="&#10;models are complete">
+    <list default="true" id="c0764dce-d9b8-485c-af9e-17f70aa847e5" name="Changes" comment="&#10;AddAppointment Controller filled out for the majority, will troubleshoot once I connect it to the Main appointment controller">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AddAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AddAppointmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AddCustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AddCustomerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MainAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MainAppointmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/AddAppointment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/AddAppointment.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/MainAppointment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/MainAppointment.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MainCustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MainCustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MainScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MainScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/AddCustomer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/AddCustomer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/MainCustomer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/MainCustomer.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673490680871</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="&#10;AddAppointment Controller filled out for the majority, will troubleshoot once I connect it to the Main appointment controller">
+      <created>1673561189821</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1673561189821</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -162,6 +171,7 @@
     <MESSAGE value="&#10;finishing database model for appointments" />
     <MESSAGE value="&#10;finished database model for appointments" />
     <MESSAGE value="&#10;models are complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="&#10;models are complete" />
+    <MESSAGE value="&#10;AddAppointment Controller filled out for the majority, will troubleshoot once I connect it to the Main appointment controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="&#10;AddAppointment Controller filled out for the majority, will troubleshoot once I connect it to the Main appointment controller" />
   </component>
 </project>

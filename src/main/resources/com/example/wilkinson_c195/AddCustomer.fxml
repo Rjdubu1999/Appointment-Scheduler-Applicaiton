@@ -4,8 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-
-<AnchorPane prefHeight="422.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AddCustomerController">
+<AnchorPane prefHeight="422.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AddCustomerController">
    <children>
       <Label layoutX="243.0" layoutY="37.0" text="Add Customer">
          <font>
@@ -32,12 +31,12 @@
             <Label text="Country" GridPane.rowIndex="3" />
             <Label text="Phone" GridPane.rowIndex="4" />
             <Label text="Zip Code" GridPane.rowIndex="5" />
-            <TextField GridPane.columnIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="customerName" GridPane.columnIndex="1" />
+            <TextField fx:id="customerAddress" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ComboBox fx:id="city" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="country" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="phone" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="zip" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
       </GridPane>
    </children>
