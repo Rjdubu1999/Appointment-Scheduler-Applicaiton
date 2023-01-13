@@ -21,11 +21,11 @@ public class DatabaseUser {
     public static Boolean login(String username, String password) {
         try {
             Statement statement = DataBaseConnection.getConnection().createStatement();
-            String query = "SELECT * FROM user WHERE userName='" + username + "AND password='" + password + "'";
+            String query = "SELECT * FROM users WHERE User_Name='" + username + "' AND Password='" + password + "'";
             ResultSet result = statement.executeQuery(query);
             if (result.next()) {
                 activeUser = new User();
-                activeUser.setUsername(result.getString("userName"));
+                activeUser.setUsername(result.getString("User_Name"));
                 statement.close();
                 Logger.log(username, true);
                 return true;

@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
@@ -28,6 +29,7 @@ public class MainAppointmentController implements Initializable {
     @FXML private TableColumn<Appointment, String> MonthlyStartCol;
     @FXML private TableColumn<Appointment, String> MonthlyEndCol;
     @FXML private Tab WeeklyTab;
+    @FXML private Tab MonthlyTab;
     @FXML private TableView<Appointment> WeeklyTableView;
     @FXML private TableColumn<Appointment, String> WeeklyDescriptionCol;
     @FXML private TableColumn<Appointment, String> WeeklyContactCol;
@@ -54,7 +56,7 @@ public class MainAppointmentController implements Initializable {
         Dialog<ButtonType> dialog = new Dialog();
         dialog.initOwner(AppointmentAnchorMain.getScene().getWindow());
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("AddAppointment.fxml"));
+        fxmlLoader.setLocation(Main.class.getResource("AddAppointment.fxml"));
         try{
             dialog.getDialogPane().setContent(fxmlLoader.load());
         }catch (IOException ioException){
@@ -63,18 +65,18 @@ public class MainAppointmentController implements Initializable {
         ButtonType save = new ButtonType("Save", ButtonBar.ButtonData.OK_DONE);
         dialog.getDialogPane().getButtonTypes().add(save);
         dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
-        AddAppointmentController addAppointmentController = fxmlLoader.getController();
-        addAppointmentController.populateCustomerNameColumn(selectedCustomer.getCustomerName());
+        AddAppointmentController controller = fxmlLoader.getController();
+        controller.populateCustomerNameColumn(selectedCustomer.getCustomerName());
         dialog.showAndWait().ifPresent((response -> {
             if(response == save){
-                if(addAppointmentController.handleAddAppointment(selectedCustomer.getCustomerID())){
+                if(controller.handleAddAppointment(selectedCustomer.getCustomerID())){
                     MonthlyApptTableView.setItems(DataBaseAppointment.getMonthlyAppointments(selectedCustomer.getCustomerID()));
                     WeeklyTableView.setItems(DataBaseAppointment.getWeeklyAppointments(selectedCustomer.getCustomerID()));
                 }else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error");
                     alert.setHeaderText("Error Adding Appointment");
-                    alert.setContentText(addAppointmentController.displayErrorMessages());
+                    alert.setContentText(controller.displayErrorMessages());
                     alert.showAndWait().ifPresent((secondResponse ->{
                         if(secondResponse == ButtonType.OK){
                             onActionAddAppointment();
@@ -86,12 +88,91 @@ public class MainAppointmentController implements Initializable {
 
     }
 
-    public void onActionModifyAppointment(ActionEvent actionEvent) {
+    public void onActionModifyAppointment() {
+        if(MonthlyTab.isSelected()) {
+            if (MonthlyApptTableView.getSelectionModel().getSelectedItem() != null) {
+                selectedAppointment = MonthlyApptTableView.getSelectionModel().getSelectedItem();
+            } else {
+                return;
+            }
+        }else{
+            if(WeeklyTableView.getSelectionModel().getSelectedItem() != null){
+                selectedAppointment = WeeklyTableView.getSelectionModel().getSelectedItem();
+            }else {
+                return;
+            }
+
+        }
+        Dialog<ButtonType> dialog = new Dialog();
+        dialog.initOwner(AppointmentAnchorMain.getScene().getWindow());
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("ModifyAppointment.fxml"));
+        try{
+            dialog.getDialogPane().setContent(fxmlLoader.load());
+
+        }catch (IOException ioException){
+            System.out.println("Error Modifying Appointment : " + ioException.getMessage());
+        }
+        ButtonType save = new ButtonType("Save", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().add(save);
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+        ModifyAppointmentController controller = fxmlLoader.getController();
+        controller.populateModifyFields(selectedCustomer.getCustomerName(),selectedAppointment);
+        dialog.showAndWait().ifPresent((firstResponse -> {
+            if(firstResponse == save){
+                if(controller.handleModifyAppointment(selectedAppointment.getAppointmentId())){
+                    MonthlyApptTableView.setItems(DataBaseAppointment.getMonthlyAppointments(selectedCustomer.getCustomerID()));
+                    WeeklyTableView.setItems(DataBaseAppointment.getWeeklyAppointments(selectedCustomer.getCustomerID()));
+                }else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("Error Modifying Appointment");
+                    alert.setContentText(controller.displayErrorMessages());
+                    alert.showAndWait().ifPresent(secondResponse -> {
+                        if(secondResponse == ButtonType.OK){
+                            onActionModifyAppointment();
+                        }
+                    });
+                }
+            }
+        }));
     }
 
-    public void onActionDeleteAppointment(ActionEvent actionEvent) {
-    }
+    public void onActionDeleteAppointment() {
+        if(MonthlyTab.isSelected()){
+            monthlyBool = true;
+            if(MonthlyApptTableView.getSelectionModel().getSelectedItem() != null){
+                selectedAppointment = MonthlyApptTableView.getSelectionModel().getSelectedItem();
+            }else {
+                return;
+            }
+        }else {
+            monthlyBool = false;
+            if(WeeklyTableView.getSelectionModel().getSelectedItem() != null){
+            selectedAppointment = WeeklyTableView.getSelectionModel().getSelectedItem();
+        }else {
+                return;
+            }
+        }
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete");
+        alert.setHeaderText("Delete Appointment");
+        alert.setContentText("Would you like to delete this appointment?");
+        alert.showAndWait().ifPresent((response -> {
+            if(response == ButtonType.OK){
+                DataBaseAppointment.deleteAppointment(selectedAppointment.getAppointmentId());
+                if(monthlyBool){
+                    MonthlyApptTableView.setItems(DataBaseAppointment.getMonthlyAppointments(selectedCustomer.getCustomerID()));
 
+                }else {
+                    WeeklyTableView.setItems(DataBaseAppointment.getWeeklyAppointments(selectedCustomer.getCustomerID()));
+                }
+            }
+        }
+                ));
+    }
+    @FXML
     public void onActionBack(ActionEvent actionEvent) {
+        ((Node) actionEvent.getSource()).getScene().getWindow().hide();
     }
 }

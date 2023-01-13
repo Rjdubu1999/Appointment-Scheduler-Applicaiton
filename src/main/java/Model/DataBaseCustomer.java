@@ -15,7 +15,7 @@ public class DataBaseCustomer {
     public static Customer getCustomer(int id) {
         try {
             Statement statement = DataBaseConnection.getConnection().createStatement();
-            String query = "SELECT * FROM customer WHERE customerId='" + id + "'";
+            String query = "SELECT * FROM customers WHERE Customer_ID='" + id + "'";
             ResultSet resultset = statement.executeQuery(query);
             if (resultset.next()) {
                 Customer customer = new Customer();
@@ -33,7 +33,7 @@ public class DataBaseCustomer {
         customerList.clear();
         try {
             Statement statement = DataBaseConnection.getConnection().createStatement();
-            String query = "SELECT customer.customerId, customer.customerName, address.address, address.phone, address.postalCode, city.city" + "FROM customer INNER JOIN address ON customer.addressId = address.addressId" + "INNER JOIN city ON address.cityId = city.cityID";
+            String query = "SELECT customers.Customer_ID, customers.Customer_Name, customers.Address, customers.phone, customers.Postal_Code, city.city" + "FROM customer INNER JOIN address ON customer.addressId = address.addressId" + "INNER JOIN city ON address.cityId = city.cityID";
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 Customer customer = new Customer(resultSet.getInt("customerId"), resultSet.getString("customerName"), resultSet.getString("address"), resultSet.getString("city"), resultSet.getString("phone"), resultSet.getString("postalCode"));
@@ -70,7 +70,7 @@ public class DataBaseCustomer {
     public static boolean updateCustomer(int id, String name, String address, int cityId, String zip, String phone) {
         try {
             Statement statement = DataBaseConnection.getConnection().createStatement();
-            String firstQuery = "UPDATE customer SET address='" + address + "', cityId=" + cityId + ", postalCode='" + zip + "', phone='" + phone + "'" + "WHERE addressId='" + id;
+            String firstQuery = "UPDATE customers SET address='" + address + "', cityId=" + cityId + ", postalCode='" + zip + "', phone='" + phone + "'" + "WHERE addressId='" + id;
             int updateFirst = statement.executeUpdate(firstQuery);
             if (updateFirst == 1) {
                 String secondQuery = "UPDATE customer SET customerName='" + name + "', addressId='" + id + "'WHERE customerId=" + id;

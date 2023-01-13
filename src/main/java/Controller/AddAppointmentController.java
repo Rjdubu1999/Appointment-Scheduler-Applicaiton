@@ -105,6 +105,18 @@ public class AddAppointmentController implements Initializable {
         CustomerNameField.setText(name);
     }
 
+    @FXML
+    public void handleLocation(){
+        String string = ContactCombo.getSelectionModel().getSelectedItem().toString();
+        if(string.equals("Jim")){
+            LocationField.setText("New York");
+        }else  if(string.equals("Jodi")) {
+            LocationField.setText("Phoenix");
+        } else if(string.equals("Chris")){
+            LocationField.setText("London");
+        }
+    }
+
 
 
 

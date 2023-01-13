@@ -2,7 +2,6 @@ package Controller;
 
 import Model.DatabaseUser;
 import Model.User;
-import Utilities.DataBaseConnection;
 import com.example.wilkinson_c195.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,17 +16,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Locale;
-import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
-import java.util.logging.Logger;
-
 
 
 public class LoginController implements Initializable {
@@ -78,13 +70,17 @@ public class LoginController implements Initializable {
     public static Locale getCurrentLocale(){
         return Locale.getDefault();
     }
-    Locale[] applicationLocales = {
-            Locale.ENGLISH,
-            Locale.FRENCH
-    };
+
+
+   // Locale[] applicationLocales = {
+     //       Locale.ENGLISH,
+     //       Locale.FRENCH
+  //  };
+
+
     public void setLoginInfo(ResourceBundle languages) {
         Locale locale = getCurrentLocale();
-        languages = ResourceBundle.getBundle("resources/com.example/wilkinson_c195/Languages", locale);
+         languages = ResourceBundle.getBundle("Languages/Language", locale);
         UsernameLabel.setText(languages.getString("username"));
         PasswordLabel.setText(languages.getString("password"));
         LogInButton.setText(languages.getString("login"));
@@ -100,6 +96,7 @@ public class LoginController implements Initializable {
 
     try{
         setLoginInfo(languages);
+
     }catch (Exception e){
         System.out.println("Error " + e.getMessage());
     }

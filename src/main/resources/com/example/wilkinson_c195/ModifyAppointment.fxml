@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="455.0" prefWidth="582.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="455.0" prefWidth="582.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <Label layoutX="220.0" layoutY="31.0" text="Modify Appointment">
             <font>
@@ -58,12 +58,12 @@
                 <Label layoutX="10.0" layoutY="17.0" text="Contact" GridPane.rowIndex="3" />
                 <Label layoutX="10.0" layoutY="17.0" text="Location" GridPane.rowIndex="4" />
                 <Label layoutX="10.0" layoutY="17.0" text="Apt. Type" GridPane.rowIndex="5" />
-                <TextField GridPane.columnIndex="1" />
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                <TextField fx:id="customerNameField" GridPane.columnIndex="1" />
+                <TextField fx:id="LocationField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                <DatePicker fx:id="DatePickerField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <ComboBox fx:id="AppointmentTimeCombo" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <ComboBox fx:id="AppointmentTypeField" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <ComboBox fx:id="ContactCombo" layoutX="159.0" layoutY="70.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             </children>
         </GridPane>
     </children>
