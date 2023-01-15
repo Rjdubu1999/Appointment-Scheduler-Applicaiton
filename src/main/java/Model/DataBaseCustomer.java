@@ -33,7 +33,7 @@ public class DataBaseCustomer {
         customerList.clear();
         try {
             Statement statement = DataBaseConnection.getConnection().createStatement();
-            String query = "SELECT customers.Customer_ID, customers.Customer_Name, customers.Address, customers.phone, customers.Postal_Code, city.city" + "FROM customer INNER JOIN address ON customer.addressId = address.addressId" + "INNER JOIN city ON address.cityId = city.cityID";
+            String query = "SELECT customers.Customer_ID, customers.Customer_Name, customers.Address, customers.Phone, customers.Postal_Code, first_level_divisions.Divisions FROM customers INNER JOIN first_level_division ON customers.Division_ID = first_level_divisions_Division_ID  ";
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 Customer customer = new Customer(resultSet.getInt("customerId"), resultSet.getString("customerName"), resultSet.getString("address"), resultSet.getString("city"), resultSet.getString("phone"), resultSet.getString("postalCode"));

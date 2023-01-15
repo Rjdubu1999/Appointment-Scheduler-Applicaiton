@@ -4,23 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0764dce-d9b8-485c-af9e-17f70aa847e5" name="Changes" comment="&#10;MainScreen Opens Appointment and customer tabs, Customer opens ADD customr from button click. Will figure out datbase issues later, will just get views to oeprate and open without err first.">
-      <change afterPath="$PROJECT_DIR$/.idea/resourceBundles.xml" afterDir="false" />
+    <list default="true" id="c0764dce-d9b8-485c-af9e-17f70aa847e5" name="Changes" comment="&#10;worked on controllers to get them up,  need to fix the SQL statements. &#10;Finally got the resource bundle to be found">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Data_Access_Object/AppointmentDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Data_Access_Object/ContactDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Data_Access_Object/CountryDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Data_Access_Object/CustomerDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Data_Access_Object/FLD_DAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Data_Access_Object/USERDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Contact.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Country.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/FLD.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AddAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AddAppointmentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MainAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MainAppointmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MainScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MainScreenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/ModifyAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/ModifyAppointmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/ModifyCustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/ModifyCustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Appointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Appointment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Customer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/DataBaseCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/DataBaseCustomer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/DatabaseUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/DatabaseUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/wilkinson_c195/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/wilkinson_c195/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Language.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages_en_US.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages_fr.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Languages_FR.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/Login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/ModifyAppointment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/ModifyAppointment.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +165,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673575353994</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="&#10;worked on controllers to get them up,  need to fix the SQL statements. &#10;Finally got the resource bundle to be found">
+      <created>1673648362227</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1673648362227</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -192,6 +198,7 @@
     <MESSAGE value="&#10;models are complete" />
     <MESSAGE value="&#10;AddAppointment Controller filled out for the majority, will troubleshoot once I connect it to the Main appointment controller" />
     <MESSAGE value="&#10;MainScreen Opens Appointment and customer tabs, Customer opens ADD customr from button click. Will figure out datbase issues later, will just get views to oeprate and open without err first." />
-    <option name="LAST_COMMIT_MESSAGE" value="&#10;MainScreen Opens Appointment and customer tabs, Customer opens ADD customr from button click. Will figure out datbase issues later, will just get views to oeprate and open without err first." />
+    <MESSAGE value="&#10;worked on controllers to get them up,  need to fix the SQL statements. &#10;Finally got the resource bundle to be found" />
+    <option name="LAST_COMMIT_MESSAGE" value="&#10;worked on controllers to get them up,  need to fix the SQL statements. &#10;Finally got the resource bundle to be found" />
   </component>
 </project>

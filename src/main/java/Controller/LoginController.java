@@ -61,9 +61,9 @@ public class LoginController implements Initializable {
             stage.show();
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Login Error");
-            alert.setContentText("Username or Password incorrect");
+            alert.setTitle(loginErrorTitle);
+            alert.setHeaderText(loginErrorHeader);
+            alert.setContentText(loginErrorText);
             alert.showAndWait();
         }
     }
@@ -78,7 +78,7 @@ public class LoginController implements Initializable {
   //  };
 
 
-    public void setLoginInfo(ResourceBundle languages) {
+  /**  public void setLoginInfo(ResourceBundle languages) {
         Locale locale = getCurrentLocale();
          languages = ResourceBundle.getBundle("Languages/Language", locale);
         UsernameLabel.setText(languages.getString("username"));
@@ -90,17 +90,27 @@ public class LoginController implements Initializable {
         loginErrorHeader = languages.getString("errorheader");
         loginErrorText = languages.getString("errortext");
 
-    }
+    } **/
     @Override
     public void initialize(URL url, ResourceBundle languages) {
-
-    try{
+        Locale locale = Locale.getDefault();
+        languages = ResourceBundle.getBundle("Languages/Language", locale);
+        UsernameLabel.setText(languages.getString("username"));
+        PasswordLabel.setText(languages.getString("password"));
+        LogInButton.setText(languages.getString("login"));
+        AnchorPaneMessage.setText(languages.getString("message"));
+        AnchorPaneLanguage.setText(languages.getString("language"));
+        loginErrorTitle = languages.getString("errortitle");
+        loginErrorHeader = languages.getString("errorheader");
+        loginErrorText = languages.getString("errortext");
+    /**try{
         setLoginInfo(languages);
+
 
     }catch (Exception e){
         System.out.println("Error " + e.getMessage());
     }
-
+**/
     }
 
 
