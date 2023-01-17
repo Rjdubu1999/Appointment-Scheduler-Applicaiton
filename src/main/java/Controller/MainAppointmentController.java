@@ -138,7 +138,7 @@ public class MainAppointmentController implements Initializable {
         }));
     }
 
-    public void onActionDeleteAppointment() {
+   /** public void onActionDeleteAppointment() {
         if(MonthlyTab.isSelected()){
             monthlyBool = true;
             if(MonthlyApptTableView.getSelectionModel().getSelectedItem() != null){
@@ -171,6 +171,7 @@ public class MainAppointmentController implements Initializable {
         }
                 ));
     }
+    **/
     @FXML
     public void onActionBack(ActionEvent actionEvent) {
         ((Node) actionEvent.getSource()).getScene().getWindow().hide();

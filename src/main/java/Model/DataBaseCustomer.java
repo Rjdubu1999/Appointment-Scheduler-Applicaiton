@@ -1,4 +1,4 @@
-package Model;
+/**package Model;
 
 import Utilities.DataBaseConnection;
 import javafx.collections.FXCollections;
@@ -104,3 +104,4 @@ public class DataBaseCustomer {
     }
 
 }
+**/

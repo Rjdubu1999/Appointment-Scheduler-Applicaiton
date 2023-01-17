@@ -21,7 +21,7 @@ public class DataBaseConnection {
     private static String password = "Passw0rd!"; // Password
     public static Connection connection;  // Connection Interface
 
-    public static void openConnection() {
+    public static Connection openConnection() {
         try {
             Class.forName(driver); // Locate Driver
             connection = DriverManager.getConnection(jdbcUrl, userName, password); // Reference Connection object
@@ -29,6 +29,7 @@ public class DataBaseConnection {
         } catch (Exception e) {
             System.out.println("Error:" + e.getMessage());
         }
+        return connection;
     }
 
     public static void closeConnection() {
@@ -42,4 +43,17 @@ public class DataBaseConnection {
     public static java.sql.Connection getConnection(){
         return connection;
     }
+
+    private static PreparedStatement preparedStatement;
+
+    public static void setPreparedStatement(Connection connection, String query) throws SQLException {
+        preparedStatement = connection.prepareStatement(query);
+    }
+    public static PreparedStatement getPreparedStatement(){
+        return preparedStatement;
+    }
+
+
 }
+
+
