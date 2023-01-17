@@ -68,13 +68,12 @@ public class MainCustomerController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     try{
-       // Connection connection = DataBaseConnection.openConnection();
-       // ObservableList<CountryDAO> countryList = CountryDAO.getCountryList();
-       // ObservableList<String> countries = FXCollections.observableArrayList();
-       // ObservableList<FLD_DAO> allFLD = FLD_DAO.getAllFLD();
-       // ObservableList<String> FLDNames = FXCollections.observableArrayList();
-       // ObservableList<Customer> allCustomer = CustomerDAO.getAllCustomers(connection);
-        customerTableView.setItems(CustomerDAO.getAllCustomers());
+        Connection connection = DataBaseConnection.openConnection();
+        ObservableList<CountryDAO> countryList = CountryDAO.getCountryList();
+        ObservableList<String> countries = FXCollections.observableArrayList();
+        ObservableList<FLD_DAO> allFLD = FLD_DAO.getAllFLD();
+        ObservableList<String> FLDNames = FXCollections.observableArrayList();
+        ObservableList<Customer> allCustomer = CustomerDAO.getAllCustomers(connection);
         customerIdCol.setCellValueFactory(new PropertyValueFactory<>("customerID"));
         customerNamecol.setCellValueFactory(new PropertyValueFactory<>("customerName"));
         AddressColumn.setCellValueFactory(new PropertyValueFactory<>("customerAddress"));
@@ -82,12 +81,14 @@ public class MainCustomerController implements Initializable {
         PhoneColumn.setCellValueFactory(new PropertyValueFactory<>("customerPhone"));
         FirstLevelColumn.setCellValueFactory(new PropertyValueFactory<>("divisionName"));
 
-     //   countryList.stream().map(Country::getCountryName).forEach(countries::add);
-     //   CountryCombo.setItems(countries);
+        countryList.stream().map(Country::getCountryName).forEach(countries::add);
+        CountryCombo.setItems(countries);
 
-      //  allFLD.forEach(FLD -> FLDNames.add(FLD.getDivisionName()));
-      //  StateCombo.setItems(FLDNames);
-      //  customerTableView.setItems(allCustomer);
+        allFLD.forEach(FLD -> {
+            FLDNames.add(FLD.getDivisionName());
+        });
+        StateCombo.setItems(FLDNames);
+        customerTableView.setItems(allCustomer);
 
     } catch (Exception exception) {
         exception.printStackTrace();
@@ -221,7 +222,7 @@ public class MainCustomerController implements Initializable {
                         fldName = fld_dao.getDivision_ID();
                     }
                 }
-                String query = "UPDATE customers SET Customer_Id = ?, Customer_Name = ?, Address = ?, Postal_Code = ?, Phone = ?, Create_Date = ?, Created_By = ?, Last_Update = ?, Last_Updated_By = ?, Division_ID = ? WHERE Customer_ID = ?";
+                String query = "UPDATE customers SET Customer_ID = ?, Customer_Name = ?, Address = ?, Postal_Code = ?, Phone = ?, Create_Date = ?, Created_By = ?, Last_Update = ?, Last_Updated_By = ?, Division_ID = ? WHERE Customer_ID = ?";
                 DataBaseConnection.setPreparedStatement(DataBaseConnection.getConnection(),query);
                 PreparedStatement preparedStatement = DataBaseConnection.getPreparedStatement();
                 preparedStatement.setInt(1, Integer.parseInt(IDField.getText()));

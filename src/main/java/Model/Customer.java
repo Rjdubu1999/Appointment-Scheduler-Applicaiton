@@ -56,7 +56,7 @@ public class Customer {
         this.divisionID = divisionID;
     }
     public Customer(int customerID, String customerName, String customerAddress,String customerPostalCode, String customerPhone,  int divisionID, String divisionName){
-        this.customerID= customerID;
+        this.customerID = customerID;
         this.customerName= customerName;
         this.customerAddress= customerAddress;
         this.customerPostalCode= customerPostalCode;
