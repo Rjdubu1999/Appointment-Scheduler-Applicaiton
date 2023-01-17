@@ -29,7 +29,7 @@ public class AddAppointmentController implements Initializable {
     @FXML private DatePicker DateField;
     @FXML private ComboBox TimeComboBox;
     @FXML private ComboBox ApTypeCombo;
-
+/**
 
     private Customer customer;
     private final ObservableList<String> appointmentTimes = FXCollections.observableArrayList("9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00");
@@ -120,10 +120,10 @@ public class AddAppointmentController implements Initializable {
 
 
 
-
+**/
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(URL url, ResourceBundle resourceBundle) {/**
         ContactCombo.setItems(contacts);
         TimeComboBox.setItems(appointmentTimes);
         ApTypeCombo.setItems(appointmentTypes);
@@ -141,6 +141,6 @@ public class AddAppointmentController implements Initializable {
                 }
             }
 
-        });
+        }); **/
     }
 }

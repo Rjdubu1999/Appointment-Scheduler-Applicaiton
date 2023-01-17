@@ -45,7 +45,7 @@ public class MainAppointmentController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
-
+/**
     public void onActionAddAppointment() {
         if(CustomerTableView.getSelectionModel().getSelectedItem() != null){
             selectedCustomer = CustomerTableView.getSelectionModel().getSelectedItem();

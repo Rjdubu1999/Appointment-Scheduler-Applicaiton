@@ -21,7 +21,7 @@ public class AddCustomerController  implements Initializable {
     @FXML  private TextField phone;
     private ObservableList<String> cityList = FXCollections.observableArrayList("New York", "Phoenix", "London");
     private ObservableList<String> errorList = FXCollections.observableArrayList();
-
+/**
     public boolean nameValidator(String customerName){
         if(customerName.isEmpty()){
             errorList.add("Name field blank, please Please fill in name field.");
@@ -117,7 +117,7 @@ public class AddCustomerController  implements Initializable {
 
 
 
-
+**/
 
 
     @Override

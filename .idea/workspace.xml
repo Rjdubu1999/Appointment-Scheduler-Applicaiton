@@ -4,13 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0764dce-d9b8-485c-af9e-17f70aa847e5" name="Changes" comment="found DAO videos for this project and figured that would be a much  better way to construct the project">
+    <list default="true" id="c0764dce-d9b8-485c-af9e-17f70aa847e5" name="Changes" comment="finishing controller to add customers, need to finish save method, setting values in combo boxes, and one other">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AddAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AddAppointmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AddCustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AddCustomerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MainAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MainAppointmentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MainCustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MainCustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Data_Access_Object/AppointmentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Data_Access_Object/AppointmentDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/DataBaseCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/DataBaseCustomer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/DataBaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/DataBaseConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/ModifyAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/ModifyAppointmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Data_Access_Object/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Data_Access_Object/CustomerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/DataBaseAppointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/DataBaseAppointment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/MainCustomer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/MainCustomer.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -171,7 +174,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673808217898</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="finishing controller to add customers, need to finish save method, setting values in combo boxes, and one other">
+      <created>1673927419001</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1673927419001</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -199,6 +209,7 @@
     <MESSAGE value="&#10;MainScreen Opens Appointment and customer tabs, Customer opens ADD customr from button click. Will figure out datbase issues later, will just get views to oeprate and open without err first." />
     <MESSAGE value="&#10;worked on controllers to get them up,  need to fix the SQL statements. &#10;Finally got the resource bundle to be found" />
     <MESSAGE value="found DAO videos for this project and figured that would be a much  better way to construct the project" />
-    <option name="LAST_COMMIT_MESSAGE" value="found DAO videos for this project and figured that would be a much  better way to construct the project" />
+    <MESSAGE value="finishing controller to add customers, need to finish save method, setting values in combo boxes, and one other" />
+    <option name="LAST_COMMIT_MESSAGE" value="finishing controller to add customers, need to finish save method, setting values in combo boxes, and one other" />
   </component>
 </project>

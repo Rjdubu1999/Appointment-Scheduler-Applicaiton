@@ -16,6 +16,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class DataBaseAppointment {
+   /**
     public static ObservableList<Appointment> getMonthlyAppointments(int id) {
         ObservableList<Appointment> appointments = FXCollections.observableArrayList();
         Appointment appointment;
@@ -184,6 +185,6 @@ public class DataBaseAppointment {
         }
         return false;
     }
-
+**/
 }
 

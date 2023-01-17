@@ -3,8 +3,8 @@ package Model;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-public final class Customer {
-    private Integer customerID ;
+public class Customer {
+    private int customerID ;
     private String customerName;
     private String customerAddress;
     private String customerPhone;
@@ -34,7 +34,7 @@ public final class Customer {
         public Integer getDivisionID(){
         return divisionID;
         }
-    public void setCustomerID(int customerID){
+    public void setCustomerID(Integer customerID){
         this.customerID =customerID;
     }
     public void setCustomerName(String customerName){
@@ -55,13 +55,14 @@ public final class Customer {
     public void setDivisionID(Integer divisionID){
         this.divisionID = divisionID;
     }
-    public Customer(int customerID, String customerName, String customerAddress, String customerPhone, String divisionName, String customerPostalCode, Integer divisionID){
+    public Customer(int customerID, String customerName, String customerAddress,String customerPostalCode, String customerPhone,  int divisionID, String divisionName){
         this.customerID= customerID;
         this.customerName= customerName;
         this.customerAddress= customerAddress;
+        this.customerPostalCode= customerPostalCode;
         this.customerPhone= customerPhone;
         this.divisionName= divisionName;
-        this.customerPostalCode= customerPostalCode;
+
         this.divisionID = divisionID;
     }
 

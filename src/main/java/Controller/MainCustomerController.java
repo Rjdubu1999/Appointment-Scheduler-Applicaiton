@@ -19,7 +19,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
@@ -48,11 +47,11 @@ public class MainCustomerController implements Initializable {
     @FXML private TableColumn<?, ?> PostalCodeCol;
     @FXML private TableColumn<?, ?> PhoneColumn;
     @FXML private TableColumn<?, ?> FirstLevelColumn;
-    @FXML private TextField IDfield;
+    @FXML private TextField IDField;
     @FXML private TextField NameField;
     @FXML private TextField PhoneField;
     @FXML private TextField AddressField;
-    @FXML private TextField PostCodeField;
+    @FXML private TextField PostalCodeField;
     @FXML private ComboBox<String> CountryCombo;
     @FXML private ComboBox<String> StateCombo;
 
@@ -60,60 +59,35 @@ public class MainCustomerController implements Initializable {
 
     private Customer selectedCustomer;
 
-    public static boolean saveCustomer(String name, String address, int cityId, String zip, String phone) {
-        int addressId = 0;
-        int customerId = 0;
-        try {
-            Statement statement = DataBaseConnection.getConnection().createStatement();
-            ResultSet resultSetOne = statement.executeQuery("SELECT MAX(addressId) FROM address");
-            if (resultSetOne.next()) {
-                addressId = resultSetOne.getInt(1);
-                addressId++;
-            }
-            ResultSet resultSetTwo = statement.executeQuery("SELECT MAX(customerId) FROM customer");
-            if (resultSetTwo.next()) {
-                customerId = resultSetTwo.getInt(1);
-                customerId++;}
-                String firstQuery = "INSERT INTO address SET addressId=" + addressId + ", address='" + address + "', address2='none', phone='" + phone + "', postalCode='" + zip + "' cityId=" + cityId + ", createDate=NOW(), createdBy='' lastUpdate=NOW(), lastUpdateBy=''";
-                int updateFirst = statement.executeUpdate(firstQuery);
-                if (updateFirst == 1) {
-                    String secondQuery = "INSERT INTO customer SET customId=" + customerId + ", customerName='" + name + "', addressId=" + addressId + ", active=1, createDate=NOW(), createdBy='', lastUpdateBy=''";
-                    int secondUpdate = statement.executeUpdate(secondQuery);
-                    if (secondUpdate == 1) {
-                        return true;
-                    }
-                }
+   // public static boolean saveCustomer(ActionEvent event){
 
-        }catch (SQLException sqlException){
-            System.out.println("Customer Info Not Found : " + sqlException.getMessage());
-        }
-        return false;
-    }
+
 
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     try{
-        Connection connection = DataBaseConnection.openConnection();
-        ObservableList<CountryDAO> countryList = CountryDAO.getCountryList();
-        ObservableList<String> countries = FXCollections.observableArrayList();
-        ObservableList<FLD_DAO> allFLD = FLD_DAO.getAllFLD();
-        ObservableList<String> FLDNames = FXCollections.observableArrayList();
-        ObservableList<Customer> allCustomer = CustomerDAO.getAllCustomers(connection);
+       // Connection connection = DataBaseConnection.openConnection();
+       // ObservableList<CountryDAO> countryList = CountryDAO.getCountryList();
+       // ObservableList<String> countries = FXCollections.observableArrayList();
+       // ObservableList<FLD_DAO> allFLD = FLD_DAO.getAllFLD();
+       // ObservableList<String> FLDNames = FXCollections.observableArrayList();
+       // ObservableList<Customer> allCustomer = CustomerDAO.getAllCustomers(connection);
+        customerTableView.setItems(CustomerDAO.getAllCustomers());
         customerIdCol.setCellValueFactory(new PropertyValueFactory<>("customerID"));
-        customerNamecol.setCellValueFactory((new PropertyValueFactory<>("CustomerName")));
+        customerNamecol.setCellValueFactory(new PropertyValueFactory<>("customerName"));
         AddressColumn.setCellValueFactory(new PropertyValueFactory<>("customerAddress"));
         PostalCodeCol.setCellValueFactory(new PropertyValueFactory<>("customerPostalCode"));
         PhoneColumn.setCellValueFactory(new PropertyValueFactory<>("customerPhone"));
         FirstLevelColumn.setCellValueFactory(new PropertyValueFactory<>("divisionName"));
 
-        countryList.stream().map(Country::getCountryName).forEach(countries::add);
-        CountryCombo.setItems(countries);
+     //   countryList.stream().map(Country::getCountryName).forEach(countries::add);
+     //   CountryCombo.setItems(countries);
 
-        allFLD.forEach(FLD -> FLDNames.add(FLD.getDivisionName()));
-        StateCombo.setItems(FLDNames);
-        customerTableView.setItems(allCustomer);
+      //  allFLD.forEach(FLD -> FLDNames.add(FLD.getDivisionName()));
+      //  StateCombo.setItems(FLDNames);
+      //  customerTableView.setItems(allCustomer);
 
     } catch (Exception exception) {
         exception.printStackTrace();
@@ -123,8 +97,8 @@ public class MainCustomerController implements Initializable {
     public void onActionAdd() {
         try {
             Connection connection = DataBaseConnection.openConnection();
-            if (!customerNamecol.getText().isEmpty() || !AddressColumn.getText().isEmpty() ||
-                    !PostalCodeCol.getText().isEmpty() || !PhoneColumn.getText().isEmpty() || !CountryCombo.getValue().isEmpty() || !StateCombo.getValue().isEmpty()) {
+            if (!NameField.getText().isEmpty() || !AddressField.getText().isEmpty() ||
+                    !PostalCodeField.getText().isEmpty() || !PhoneField.getText().isEmpty() || !CountryCombo.getValue().isEmpty() || !StateCombo.getValue().isEmpty()) {
                 Integer newCustomerID = (int) (Math.random() * 50);
                 int FLDName = 0;
                 for (FLD_DAO fld : FLD_DAO.getAllFLD()) {
@@ -133,14 +107,14 @@ public class MainCustomerController implements Initializable {
                     }
 
                 }
-                String query = "INSERT INTO customers (Customer_Id, Customer_Name, Address, Postal_Code, Phone, Create_Date, Created_By, Last_Update, Last_Updated_By, Division_ID) VALUES(?,?,?,?,?,?,?,?,?,?)";
+                String query = "INSERT INTO customers (Customer_ID, Customer_Name, Address, Postal_Code, Phone, Create_Date, Created_By, Last_Update, Last_Updated_By, Division_ID) VALUES(?,?,?,?,?,?,?,?,?,?)";
                 DataBaseConnection.setPreparedStatement(DataBaseConnection.getConnection(),query);
                 PreparedStatement preparedStatement = DataBaseConnection.getPreparedStatement();
                 preparedStatement.setInt(1, newCustomerID);
-                preparedStatement.setString(2, customerNamecol.getText());
-                preparedStatement.setString(3,AddressColumn.getText());
-                preparedStatement.setString(4,PostalCodeCol.getText());
-                preparedStatement.setString(5,PhoneColumn.getText());
+                preparedStatement.setString(2, NameField.getText());
+                preparedStatement.setString(3,AddressField.getText());
+                preparedStatement.setString(4,PostalCodeField.getText());
+                preparedStatement.setString(5,PhoneField.getText());
                 preparedStatement.setTimestamp(6, Timestamp.valueOf(LocalDateTime.now()));
                 preparedStatement.setString(7, "admin");
                 preparedStatement.setTimestamp(8, Timestamp.valueOf(LocalDateTime.now()));
@@ -148,10 +122,10 @@ public class MainCustomerController implements Initializable {
                 preparedStatement.setInt(10, FLDName);
                 preparedStatement.execute();
 
-                IDfield.clear();
+                IDField.clear();
                 NameField.clear();
                 AddressField.clear();
-                PostCodeField.clear();
+                PostalCodeField.clear();
                 PhoneField.clear();
 
                 ObservableList<Customer> updateCustomers = CustomerDAO.getAllCustomers(connection);
@@ -236,5 +210,77 @@ public class MainCustomerController implements Initializable {
         returnToMain.show();
     }
 
-    public void onActionSave(ActionEvent actionEvent) {}
+    public void onActionSave(ActionEvent actionEvent) {
+        try {
+            Connection connection = DataBaseConnection.openConnection();
+            if(NameField.getText().isEmpty() || !AddressField.getText().isEmpty() ||
+                    !PostalCodeField.getText().isEmpty() || !PhoneField.getText().isEmpty() || !CountryCombo.getValue().isEmpty() || !StateCombo.getValue().isEmpty()){
+                int fldName = 0;
+                for (FLD_DAO fld_dao : FLD_DAO.getAllFLD()){
+                    if(StateCombo.getSelectionModel().getSelectedItem().equals(fld_dao.getDivisionName())){
+                        fldName = fld_dao.getDivision_ID();
+                    }
+                }
+                String query = "UPDATE customers SET Customer_Id = ?, Customer_Name = ?, Address = ?, Postal_Code = ?, Phone = ?, Create_Date = ?, Created_By = ?, Last_Update = ?, Last_Updated_By = ?, Division_ID = ? WHERE Customer_ID = ?";
+                DataBaseConnection.setPreparedStatement(DataBaseConnection.getConnection(),query);
+                PreparedStatement preparedStatement = DataBaseConnection.getPreparedStatement();
+                preparedStatement.setInt(1, Integer.parseInt(IDField.getText()));
+                preparedStatement.setString(2, NameField.getText());
+                preparedStatement.setString(3, AddressField.getText());
+                preparedStatement.setString(4, PostalCodeField.getText());
+                preparedStatement.setString(5, PhoneField.getText());
+                preparedStatement.setTimestamp(6, Timestamp.valueOf(LocalDateTime.now()));
+                preparedStatement.setString(7, "admin");
+                preparedStatement.setTimestamp(8, Timestamp.valueOf(LocalDateTime.now()));
+                preparedStatement.setString(9, "admin");
+                preparedStatement.setInt(10, fldName);
+                preparedStatement.setInt(11, Integer.parseInt(IDField.getText()));
+                preparedStatement.execute();
+
+                IDField.clear();
+                NameField.clear();
+                AddressField.clear();
+                PostalCodeField.clear();
+                PhoneField.clear();
+
+                ObservableList<Customer> updateCustomerList = CustomerDAO.getAllCustomers(connection);
+                customerTableView.setItems(updateCustomerList);
+            }
+        } catch (Exception exception){
+            exception.printStackTrace();
+        }
+    }
+
+    public void FillCountryCombo(ActionEvent actionEvent) throws  SQLException{
+        try{
+            DataBaseConnection.openConnection();
+
+            String selectedCountry = CountryCombo.getSelectionModel().getSelectedItem();
+            ObservableList<FLD_DAO> getAllFLD = FLD_DAO.getAllFLD();
+            ObservableList<String> usDivisions = FXCollections.observableArrayList();
+            ObservableList<String> ukDivisions = FXCollections.observableArrayList();
+            ObservableList<String> canDivisions = FXCollections.observableArrayList();
+
+            getAllFLD.forEach(FLD -> {
+                if(FLD.getCountry_ID() == 1){
+                    usDivisions.add(FLD.getDivisionName());
+                }else if( FLD.getCountry_ID() == 2){
+                    ukDivisions.add(FLD.getDivisionName());
+                }else if(FLD.getCountry_ID() == 3){
+                    canDivisions.add(FLD.getDivisionName());
+                }
+            });
+            if(selectedCountry.equals("United States")){
+                StateCombo.setItems(usDivisions);
+            }else if(selectedCountry.equals("United Kingdom")){
+                StateCombo.setItems(ukDivisions);
+            }else if(selectedCountry.equals("Canada")){
+                StateCombo.setItems(canDivisions);
+            }
+        }catch (Exception exception){
+            exception.printStackTrace();
+        }
+    }
+
+
 }

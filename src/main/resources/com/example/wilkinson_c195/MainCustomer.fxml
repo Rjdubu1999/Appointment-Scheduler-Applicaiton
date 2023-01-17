@@ -30,7 +30,7 @@
             <Button mnemonicParsing="false" onAction="#onActionSave" style="-fx-background-radius: 20;" text="Save" />
         </buttons>
       </ButtonBar>
-      <Label fx:id="IDField" layoutX="57.0" layoutY="305.0" text="ID" />
+      <Label layoutX="57.0" layoutY="305.0" text="ID" />
       <Label layoutX="273.0" layoutY="305.0" text="Name" />
       <Label layoutX="57.0" layoutY="350.0" text="Address" />
       <Label layoutX="524.0" layoutY="350.0" text="Postal Code" />
@@ -40,9 +40,9 @@
       <TextField fx:id="IDField" layoutX="78.0" layoutY="301.0" />
       <TextField fx:id="NameField" layoutX="316.0" layoutY="301.0" />
       <TextField fx:id="PhoneField" layoutX="569.0" layoutY="301.0" prefHeight="25.0" prefWidth="149.0" />
-      <TextField fx:id="AdressField" layoutX="109.0" layoutY="346.0" prefHeight="25.0" prefWidth="388.0" />
+      <TextField fx:id="AddressField" layoutX="109.0" layoutY="346.0" prefHeight="25.0" prefWidth="388.0" />
       <TextField fx:id="PostalCodeField" layoutX="606.0" layoutY="346.0" prefHeight="25.0" prefWidth="75.0" />
-      <ComboBox fx:id="CountryCombo" layoutX="109.0" layoutY="392.0" prefHeight="25.0" prefWidth="156.0" />
+      <ComboBox fx:id="CountryCombo" layoutX="109.0" layoutY="392.0" onAction="#FillCountryCombo" prefHeight="25.0" prefWidth="156.0" />
       <ComboBox fx:id="StateCombo" layoutX="566.0" layoutY="392.0" prefHeight="25.0" prefWidth="156.0" />
    </children>
 </AnchorPane>

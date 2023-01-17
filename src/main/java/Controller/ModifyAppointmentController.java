@@ -30,7 +30,7 @@ public class ModifyAppointmentController implements Initializable {
     private TextField LocationField;
     @FXML
     private ComboBox AppointmentTypeCombo;
-
+/**
     private final ObservableList<String> appointmentTimes = FXCollections.observableArrayList("9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00");
     private final ObservableList<String> appointmentTypes = FXCollections.observableArrayList(
             "Insurance Quote", "Prescription List Check", "Plan Change", "Medicare Questions", "Life Insurance");
@@ -129,10 +129,11 @@ public class ModifyAppointmentController implements Initializable {
 
 
 
-
+**/
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        /**
         ContactCombo.setItems(contacts);
         AppointmentTimeCombo.setItems(appointmentTimes);
         AppointmentTypeCombo.setItems(appointmentTypes);
@@ -152,6 +153,7 @@ public class ModifyAppointmentController implements Initializable {
 
         });
     }
-
+*/
     }
+}
 
