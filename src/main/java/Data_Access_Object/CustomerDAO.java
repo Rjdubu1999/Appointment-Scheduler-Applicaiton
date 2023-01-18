@@ -5,10 +5,8 @@ import Utilities.DataBaseConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDateTime;
 
 public class CustomerDAO {
 
@@ -31,4 +29,7 @@ public class CustomerDAO {
         }
         return customerObservableList;
     }
-}
+
+
+    }
+

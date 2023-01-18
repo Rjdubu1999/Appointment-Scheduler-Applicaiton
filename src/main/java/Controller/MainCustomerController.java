@@ -138,7 +138,24 @@ public class MainCustomerController implements Initializable {
 
     }
 
-    public void onActionModify(ActionEvent actionEvent) throws  SQLException{
+    public void onActionModify(ActionEvent actionEvent) throws IOException, SQLException {
+      /**  Customer selectedCustomer = customerTableView.getSelectionModel().getSelectedItem();
+        int customerIndex = customerTableView.getSelectionModel().getSelectedIndex();
+        if (selectedCustomer == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Select Customer");
+            alert.setContentText("No Customer Was Selected To Modify");
+            alert.showAndWait();
+            return;
+        }
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ModifyCustomer.fxml"));
+        Scene scene= new Scene(fxmlLoader.load(), 550, 700);
+        ModifyCustomerController.customerToModify(customerIndex, selectedCustomer);
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+     //   Scene scene = new Scene(root, 600, 600);
+        stage.setScene(scene);
+        stage.show();
+    } **/
         try{
             DataBaseConnection.openConnection();
             Customer customer = (Customer) customerTableView.getSelectionModel().getSelectedItem();
@@ -148,16 +165,16 @@ public class MainCustomerController implements Initializable {
                 ObservableList<FLD_DAO> getFLDNames = FLD_DAO.getAllFLD();
                 ObservableList<String> allFLD = FXCollections.observableArrayList();
                 StateCombo.setItems(allFLD);
-                customerIdCol.setText(String.valueOf(customer.getCustomerID()));
-                customerNamecol.setText(customer.getCustomerName());
-                AddressColumn.setText(customer.getCustomerAddress());
-                PostalCodeCol.setText(customer.getCustomerPostalCode());
-                PhoneColumn.setText(customer.getCustomerPhone());
+                IDField.setText(String.valueOf(customer.getCustomerID()));
+                NameField.setText(customer.getCustomerName());
+                AddressField.setText(customer.getCustomerAddress());
+                PostalCodeField.setText(customer.getCustomerPostalCode());
+                PhoneField.setText(customer.getCustomerPhone());
 
                 for(FLD fld: getFLDNames){
                     allFLD.add(fld.getDivisionName());
                     int updateCountryID = fld.getCountry_ID();
-                    if(fld.getCountry_ID() == customer.getDivisionID()) division = fld.getDivisionName();
+                    if(fld.getDivision_ID() == customer.getDivisionID()) division = fld.getDivisionName();
                     for(Country countryVar: getAllCountries){
                         if(countryVar.getCountryID() == updateCountryID){
                             country = countryVar.getCountryName();
@@ -214,7 +231,7 @@ public class MainCustomerController implements Initializable {
     public void onActionSave(ActionEvent actionEvent) {
         try {
             Connection connection = DataBaseConnection.openConnection();
-            if(NameField.getText().isEmpty() || !AddressField.getText().isEmpty() ||
+            if(!NameField.getText().isEmpty() || !AddressField.getText().isEmpty() ||
                     !PostalCodeField.getText().isEmpty() || !PhoneField.getText().isEmpty() || !CountryCombo.getValue().isEmpty() || !StateCombo.getValue().isEmpty()){
                 int fldName = 0;
                 for (FLD_DAO fld_dao : FLD_DAO.getAllFLD()){
@@ -271,9 +288,9 @@ public class MainCustomerController implements Initializable {
                     canDivisions.add(FLD.getDivisionName());
                 }
             });
-            if(selectedCountry.equals("United States")){
+            if(selectedCountry.equals("U.S")){
                 StateCombo.setItems(usDivisions);
-            }else if(selectedCountry.equals("United Kingdom")){
+            }else if(selectedCountry.equals("UK")){
                 StateCombo.setItems(ukDivisions);
             }else if(selectedCountry.equals("Canada")){
                 StateCombo.setItems(canDivisions);

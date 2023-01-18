@@ -4,9 +4,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="422.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ModifyCustomerController">
+<AnchorPane prefHeight="422.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ModifyCustomerController">
     <children>
-        <Label layoutX="243.0" layoutY="37.0" text="Modify Customer">
+        <Label layoutX="243.0" layoutY="37.0" text="Update Customer">
             <font>
                 <Font size="18.0" />
             </font>
@@ -17,6 +17,7 @@
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             </columnConstraints>
             <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -25,19 +26,23 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Label text="Name" />
-                <Label text="Address" GridPane.rowIndex="1" />
-                <Label text="City" GridPane.rowIndex="2" />
-                <Label text="Country" GridPane.rowIndex="3" />
+                <Label text="Name" GridPane.rowIndex="1" />
+                <Label text="Address" GridPane.rowIndex="2" />
+                <Label text="Postal Code" GridPane.rowIndex="3" />
                 <Label text="Phone" GridPane.rowIndex="4" />
-                <Label text="Zip Code" GridPane.rowIndex="5" />
-                <TextField GridPane.columnIndex="1" />
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                <Label text="Country" GridPane.rowIndex="5" />
+                <Label text="State" GridPane.rowIndex="6" />
+                <TextField fx:id="NameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <TextField fx:id="AddressField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <ComboBox fx:id="CountryCombo" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                <TextField fx:id="PhoneField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label layoutX="10.0" layoutY="51.0" text="ID" />
+            <TextField fx:id="IDField" layoutX="161.0" layoutY="47.0" GridPane.columnIndex="1" />
+            <ComboBox fx:id="StateCombo" layoutX="161.0" layoutY="113.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <TextField fx:id="PostalCodeField" layoutX="161.0" layoutY="80.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             </children>
         </GridPane>
+      <Button layoutX="424.0" layoutY="361.0" mnemonicParsing="false" onAction="#onActionUpdate" style="-fx-background-radius: 20;" text="Update" />
+      <Button layoutX="509.0" layoutY="361.0" mnemonicParsing="false" onAction="#onActionCancel" style="-fx-background-radius: 20;" text="Cancel" />
     </children>
 </AnchorPane>

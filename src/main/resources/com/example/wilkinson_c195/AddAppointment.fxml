@@ -4,41 +4,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="455.0" prefWidth="582.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AddAppointmentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="582.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AddAppointmentController">
    <children>
       <Label layoutX="220.0" layoutY="31.0" text="Add Appointment">
          <font>
-            <Font size="18.0" />
+            <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="250.0" layoutY="70.0" text="Time Zones">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <GridPane layoutX="180.0" layoutY="95.0" prefHeight="90.0" prefWidth="260.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="51.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="0.0" prefWidth="71.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="67.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="125.0" minWidth="0.0" prefWidth="73.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="63.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="56.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Label fx:id="currentTime" alignment="CENTER" text="Local" />
-            <Label alignment="CENTER" text="00:00" GridPane.rowIndex="1" />
-            <Label fx:id="NYLabel" alignment="CENTER" layoutY="24.0" text="New York" GridPane.columnIndex="1" />
-            <Label alignment="CENTER" layoutY="24.0" text="00:00" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label fx:id="PhoenixLabel" alignment="CENTER" layoutY="69.0" text="Phoenix" GridPane.columnIndex="2" />
-            <Label alignment="CENTER" text="00:00" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Label fx:id="LondonLabel" alignment="CENTER" text="London" GridPane.columnIndex="3" />
-            <Label alignment="CENTER" text="00:00" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-         </children>
-      </GridPane>
-      <GridPane layoutX="155.0" layoutY="204.0" prefHeight="177.0" prefWidth="297.0">
+      <GridPane layoutX="157.0" layoutY="83.0" prefHeight="338.0" prefWidth="297.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -47,24 +20,44 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Customer Name" />
-            <Label layoutX="10.0" layoutY="17.0" text="Date" GridPane.rowIndex="1" />
-            <Label layoutX="10.0" layoutY="17.0" text="Apt. Time" GridPane.rowIndex="2" />
-            <Label layoutX="10.0" layoutY="17.0" text="Contact" GridPane.rowIndex="3" />
-            <Label layoutX="10.0" layoutY="17.0" text="Location" GridPane.rowIndex="4" />
-            <Label layoutX="10.0" layoutY="17.0" text="Apt. Type" GridPane.rowIndex="5" />
-            <TextField fx:id="CustomerNameField" GridPane.columnIndex="1" />
-            <TextField fx:id="LocationField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <DatePicker fx:id="DateField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ComboBox fx:id="TimeComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <ComboBox fx:id="ApTypeCombo" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <ComboBox fx:id="ContactCombo" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="Description" GridPane.rowIndex="4" />
+            <Label layoutX="10.0" layoutY="17.0" text="Start Date" GridPane.rowIndex="5" />
+            <Label layoutX="10.0" layoutY="17.0" text="End Date" GridPane.rowIndex="7" />
+            <Label layoutX="10.0" layoutY="17.0" text="Customer ID" GridPane.rowIndex="9" />
+            <Label layoutX="10.0" layoutY="17.0" text="Location" GridPane.rowIndex="3" />
+            <Label layoutX="10.0" layoutY="17.0" text="User ID" GridPane.rowIndex="11" />
+            <TextField fx:id="CustomerID" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <DatePicker fx:id="EndDate" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <ComboBox fx:id="Contact" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+            <Label layoutX="10.0" layoutY="155.0" text="Appointment ID" />
+            <Label layoutX="10.0" layoutY="19.0" text="Appointment Title" GridPane.rowIndex="1" />
+            <Label layoutX="10.0" layoutY="53.0" text="Appointment Type" GridPane.rowIndex="2" />
+            <Label layoutX="10.0" layoutY="257.0" text="Contact " GridPane.rowIndex="10" />
+            <TextField fx:id="Type" layoutX="159.0" layoutY="151.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="Location" layoutX="159.0" layoutY="151.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="Description" layoutX="159.0" layoutY="151.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label layoutX="10.0" layoutY="156.0" text="Start Time" GridPane.rowIndex="6" />
+            <Label layoutX="10.0" layoutY="240.0" text="End Time" GridPane.rowIndex="8" />
+            <ComboBox fx:id="EndField" layoutX="159.0" layoutY="264.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <TextField fx:id="Title" layoutX="159.0" layoutY="68.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="AptID" layoutX="159.0" layoutY="68.0" GridPane.columnIndex="1" />
+            <ComboBox fx:id="StartTime" layoutX="159.0" layoutY="236.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <DatePicker fx:id="StartDate" layoutX="159.0" layoutY="208.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="UserID" layoutX="159.0" layoutY="264.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
          </children>
       </GridPane>
+      <Button layoutX="194.0" layoutY="451.0" mnemonicParsing="false" onAction="#onActionSave" style="-fx-background-radius: 20;" text="Save" />
+      <Button layoutX="318.0" layoutY="451.0" mnemonicParsing="false" onAction="#onActionCancel" style="-fx-background-radius: 20;" text="Cancel" />
    </children>
 </AnchorPane>
