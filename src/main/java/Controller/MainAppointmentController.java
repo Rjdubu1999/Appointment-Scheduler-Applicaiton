@@ -1,10 +1,14 @@
 package Controller;
 
 import Data_Access_Object.AppointmentDAO;
+import Data_Access_Object.ContactDAO;
 import Model.Appointment;
+import Model.Contact;
 import Model.Customer;
 import Model.DataBaseAppointment;
+import Utilities.DataBaseConnection;
 import com.example.wilkinson_c195.Main;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,10 +25,27 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalTime;
 import java.util.ResourceBundle;
 
 public class MainAppointmentController  {
 
+    @FXML private TextField AptIDField;
+    @FXML private TextField UserIDField ;
+    @FXML private TextField LocationField;
+    @FXML private TextField TitleField;
+    @FXML private TextField TypeField;
+    @FXML private TextField DescriptionField;
+    @FXML private TextField CustomerIDField;
+    @FXML private TextField ContactField;
+    @FXML private RadioButton AllAptRadio;
+    @FXML private RadioButton WeeklyRadio;
+    @FXML private RadioButton MonthlyRadio;
+    @FXML private ComboBox<String> StartTimeCombo;
+    @FXML private ComboBox<String> EndTimeCombo;
+    @FXML private DatePicker StartDatePicker;
+    @FXML private DatePicker EndDatePicker;
+    @FXML private ComboBox<String> ContactCombo;
     @FXML private TableColumn<?,?> CustomerIDColumn;
     @FXML private TableColumn<?,?> AptIDColumn;
     @FXML private TableColumn<?,?> TitleColumn;
@@ -60,6 +81,58 @@ public class MainAppointmentController  {
         MainTableView.setItems(allAppointments);
 
     }
+    @FXML
+    void loadAppointmentData(){
+        try{
+            DataBaseConnection.openConnection();
+            Appointment selectedAppointment = MainTableView.getSelectionModel().getSelectedItem();
+
+            if(selectedAppointment != null){
+                ObservableList<Contact> contactObservableList = ContactDAO.getAllContacts();
+                ObservableList<String> contactNameList = FXCollections.observableArrayList();
+                String onScreenContactName = "";
+
+                contactObservableList.forEach(contact -> contactNameList.add(contact.getContactName()));
+                ContactCombo.setItems(contactNameList);
+                for(Contact contact: contactObservableList){
+                    if(selectedAppointment.getContactID() == contact.getContactID()){
+                        onScreenContactName = contact.getContactName();
+                    }
+                }
+                AptIDField.setText(String.valueOf(selectedAppointment.getAppointmentID()));
+                TitleField.setText(selectedAppointment.getAppointmentTitle());
+                LocationField.setText(selectedAppointment.getLocation());
+                DescriptionField.setText(selectedAppointment.getDescription());
+                TypeField.setText(selectedAppointment.getType());
+                CustomerIDField.setText(String.valueOf(selectedAppointment.getCustomerID()));
+                StartDatePicker.setValue(selectedAppointment.getStart().toLocalDate());
+                EndDatePicker.setValue(selectedAppointment.getEnd().toLocalDate());
+                StartTimeCombo.setValue(String.valueOf(selectedAppointment.getStart().toLocalTime()));
+                EndTimeCombo.setValue(String.valueOf(selectedAppointment.getEnd().toLocalTime()));
+                UserIDField.setText(String.valueOf(selectedAppointment.getUserID()));
+                ContactCombo.setValue(onScreenContactName);
+
+                ObservableList<String> timesOfAppointments = FXCollections.observableArrayList();
+
+                LocalTime firstApt = LocalTime.MIN.plusHours(8);
+                LocalTime lastApt = LocalTime.MAX.minusHours(1).minusMinutes(45);
+
+                if(!firstApt.equals(0) || !lastApt.equals(0)){
+                    while(firstApt.isBefore(lastApt)){
+                        timesOfAppointments.add(String.valueOf(firstApt));
+                        firstApt = firstApt.plusMinutes(15);
+                    }
+                }
+                StartTimeCombo.setItems(timesOfAppointments);
+                EndTimeCombo.setItems(timesOfAppointments);
+
+
+                }
+            }catch (Exception exception){
+            exception.printStackTrace();
+        }
+
+        }
 
     public void onActionAddAppointment(ActionEvent actionEvent)throws IOException {
         Parent appointmentButton = FXMLLoader.load(Main.class.getResource("AddAppointment.fxml"));

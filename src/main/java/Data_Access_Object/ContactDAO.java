@@ -12,7 +12,7 @@ import java.sql.SQLException;
 public class ContactDAO {
     public static ObservableList<Contact> getAllContacts() throws SQLException{
         ObservableList<Contact> contactObservableList = FXCollections.observableArrayList();
-        String query = "SELECT from contacts";
+        String query = "SELECT * from contacts";
         PreparedStatement preparedStatement = DataBaseConnection.getConnection().prepareStatement(query);
         ResultSet resultSet = preparedStatement.executeQuery();
         while(resultSet.next()) {
@@ -27,7 +27,7 @@ public class ContactDAO {
     }
 
     public static String locateContact(String contactID) throws SQLException{
-        PreparedStatement preparedStatement = DataBaseConnection.getConnection().prepareStatement("SELECT * FROM contacts WHERE contact_Name = ?");
+        PreparedStatement preparedStatement = DataBaseConnection.getConnection().prepareStatement("SELECT * FROM contacts WHERE Contact_Name = ?");
         preparedStatement.setString(1, contactID);
         ResultSet resultSet = preparedStatement.executeQuery();
         while(resultSet.next()){

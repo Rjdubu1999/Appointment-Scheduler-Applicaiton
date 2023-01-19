@@ -34,7 +34,9 @@ public class Appointment {
         this.userID = userID;
         this.contactID = contactID;
     }
-
+    public String getType(){
+        return type;
+    }
     public int getAppointmentID(){
         return appointmentID;
     }

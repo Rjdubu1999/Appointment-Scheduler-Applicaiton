@@ -4,18 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0764dce-d9b8-485c-af9e-17f70aa847e5" name="Changes" comment="got the data to load into the table for the customer screen!&#10;Had to alter the module to open Model class to jfx base">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Utilities/Time.java" afterDir="false" />
+    <list default="true" id="c0764dce-d9b8-485c-af9e-17f70aa847e5" name="Changes" comment="-need to get the customer controller to be able to modify still, it doesnt not do exactly what i imagine.&#10;&#10;&#10;-working on adding appointment in appointment controller.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AddAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AddAppointmentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MainAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MainAppointmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MainCustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MainCustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/ModifyCustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/ModifyCustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Data_Access_Object/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Data_Access_Object/CustomerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Data_Access_Object/ContactDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Data_Access_Object/ContactDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Appointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Appointment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/AddAppointment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/AddAppointment.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/MainAppointment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/MainAppointment.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/ModifyCustomer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/ModifyCustomer.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,7 +200,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673988433840</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="-need to get the customer controller to be able to modify still, it doesnt not do exactly what i imagine.&#10;&#10;&#10;-working on adding appointment in appointment controller.">
+      <created>1674082549197</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1674082549197</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -235,6 +238,7 @@
     <MESSAGE value="finishing controller to add customers, need to finish save method, setting values in combo boxes, and one other" />
     <MESSAGE value="data will load into MySQL database, but will not populate the customer table, trying to figure out issue" />
     <MESSAGE value="got the data to load into the table for the customer screen!&#10;Had to alter the module to open Model class to jfx base" />
-    <option name="LAST_COMMIT_MESSAGE" value="got the data to load into the table for the customer screen!&#10;Had to alter the module to open Model class to jfx base" />
+    <MESSAGE value="-need to get the customer controller to be able to modify still, it doesnt not do exactly what i imagine.&#10;&#10;&#10;-working on adding appointment in appointment controller." />
+    <option name="LAST_COMMIT_MESSAGE" value="-need to get the customer controller to be able to modify still, it doesnt not do exactly what i imagine.&#10;&#10;&#10;-working on adding appointment in appointment controller." />
   </component>
 </project>

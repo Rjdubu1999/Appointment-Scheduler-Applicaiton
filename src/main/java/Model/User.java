@@ -18,9 +18,9 @@ public class User {
     public String getUsername(){
         return username;
     }
-   // public void setUsername(String userName){
-   //     this.username = username;
-  //  }
+    public void setUsername(String userName){
+        this.username = username;
+    }
 
     public User(){ /**
         this.userID = userID;

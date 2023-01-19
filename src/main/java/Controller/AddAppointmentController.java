@@ -4,30 +4,31 @@ import Data_Access_Object.AppointmentDAO;
 import Data_Access_Object.ContactDAO;
 import Data_Access_Object.CustomerDAO;
 import Data_Access_Object.USERDAO;
-import Model.Appointment;
-import Model.Customer;
-import Model.DataBaseAppointment;
-import Model.User;
+import Model.*;
 import Utilities.DataBaseConnection;
+import com.example.wilkinson_c195.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.Time;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import static Utilities.Time.convertTOUTC;
+
 
 
 public class AddAppointmentController implements Initializable {
@@ -142,26 +143,30 @@ public class AddAppointmentController implements Initializable {
 **/
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {/**
-        ContactCombo.setItems(contacts);
-        TimeComboBox.setItems(appointmentTimes);
-        ApTypeCombo.setItems(appointmentTypes);
-        DateField.setDayCellFactory(datePicker -> new DateCell() {
-            @Override
-            public void updateItem(LocalDate DateField, boolean none) {
-                super.updateItem(DateField, none);
-                setDisable(none || DateField.getDayOfWeek() == DayOfWeek.SATURDAY ||
-                        DateField.getDayOfWeek() == DayOfWeek.SUNDAY ||
-                        DateField.isBefore(LocalDate.now()));
-                if (DateField.getDayOfWeek() == DayOfWeek.SATURDAY
-                        || DateField.getDayOfWeek() == DayOfWeek.SUNDAY ||
-                        DateField.isBefore(LocalDate.now())) {
-                    setStyle("-fx-background-color: #fa0400");
+    public void initialize(URL url ,ResourceBundle resourceBundle)  {
+        try {
+            ObservableList<Model.Contact> contactObservableList = ContactDAO.getAllContacts();
+            ObservableList<String> allContacts = FXCollections.observableArrayList();
+
+            contactObservableList.forEach(contact -> allContacts.add(contact.getContactName()));
+            ObservableList<String> aptTimes = FXCollections.observableArrayList();
+            LocalTime beginningApt = LocalTime.MIN.plusHours(8);
+            LocalTime endingApt = LocalTime.MAX.minusHours(1).minusMinutes(45);
+            if (!beginningApt.equals(0) || !endingApt.equals(0)) {
+                while (beginningApt.isBefore(endingApt)) {
+                    aptTimes.add(String.valueOf(beginningApt));
+                    beginningApt = beginningApt.plusMinutes(15);
                 }
             }
+            StartTime.setItems(aptTimes);
+            EndField.setItems(aptTimes);
+            Contact.setItems(allContacts);
 
-        }); **/
+        }catch (SQLException sqlException){
+            sqlException.printStackTrace();
+        }
     }
+
 
     public void onActionSave(ActionEvent actionEvent) throws IOException {
         try{
@@ -187,13 +192,13 @@ public class AddAppointmentController implements Initializable {
 
                 System.out.println("Appointment Date + Appointment Start" + startDate + startTime + ":00");
                 String startUTCConvert = convertTOUTC(StartDate + " " + StartTime + ":00");
-                String endUTCConvert = convertTOUTC(EndDate + " " + EndField + ":00");
+                String endUTCConvert = convertTOUTC(endDate + " " + endTime + ":00");
 
                 LocalTime localStart = LocalTime.parse(StartTime.getValue(), timeFormatter);
                 LocalTime localEnd = LocalTime.parse(EndField.getValue(), timeFormatter);
 
                 LocalDateTime dtStart = LocalDateTime.of(localStartDate, localStart);
-                LocalDateTime dtEnd = LocalDateTime.of(localStartDate, localEnd);
+                LocalDateTime dtEnd = LocalDateTime.of(localEndDate, localEnd);
 
                 ZonedDateTime zoneStart = ZonedDateTime.of(dtStart, ZoneId.systemDefault());
                 ZonedDateTime zoneEnd = ZonedDateTime.of(dtEnd, ZoneId.systemDefault());
@@ -225,7 +230,7 @@ public class AddAppointmentController implements Initializable {
 
                 if(CheckStartTime.isBefore(startBusinessHours) || CheckStartTime.isAfter(endBusinessHours) || CheckEndTime.isBefore(startBusinessHours) || CheckEndTime.isAfter(endBusinessHours)){
                     System.out.println("The Time selected is outside of business hours");
-                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Business Hours are (8am-10pm EST):" + CheckStartTime + "-" + CheckEndTime + "EST";
+                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Business Hours are (8am-10pm EST):" + CheckStartTime + "-" + CheckEndTime + "EST");
                     Optional<ButtonType> confirm = alert.showAndWait();
                     return;
                 }
@@ -271,10 +276,17 @@ public class AddAppointmentController implements Initializable {
                 preparedStatement.setInt(11,1);
                 preparedStatement.setInt(12,Integer.parseInt(CustomerID.getText()));
                 preparedStatement.setInt(13, Integer.parseInt(ContactDAO.locateContact(Contact.getValue())));
-                preparedStatement.setInt(13, Integer.parseInt(ContactDAO.locateContact(UserID.getText())));
-
+                preparedStatement.setInt(14, Integer.parseInt(ContactDAO.locateContact(UserID.getText())));
+                preparedStatement.execute();
 
             }
+            Parent root = FXMLLoader.load(Main.class.getResource("MainAppointment.fxml"));
+            Scene scene = new Scene(root);
+            Stage returnToMain = (Stage) ((javafx.scene.Node)actionEvent.getSource()).getScene().getWindow();
+            returnToMain.setScene(scene);
+            returnToMain.show();
+        }catch (SQLException sqlException){
+            sqlException.printStackTrace();
         }
     }
 
