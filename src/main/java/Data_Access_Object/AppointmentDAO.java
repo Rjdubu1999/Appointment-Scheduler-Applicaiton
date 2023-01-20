@@ -31,7 +31,7 @@ public class AppointmentDAO {
             int contactID = resultSet.getInt("Contact_ID");
             int customerID = resultSet.getInt("Customer_ID");
             Appointment appointment = new Appointment(appointmentID, appointmentTitle, appointmentDescription,appointmentLocation, appointmentType, start,end, userID,contactID,customerID);
-
+            appointmentObservableList.add(appointment);
         }
         return appointmentObservableList;
     }

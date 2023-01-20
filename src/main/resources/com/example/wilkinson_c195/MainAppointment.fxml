@@ -6,7 +6,7 @@
 
 <AnchorPane fx:id="AppointmentAnchorMain" prefHeight="610.0" prefWidth="816.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainAppointmentController">
     <children>
-        <TableView fx:id="MainTableView" layoutX="26.0" layoutY="64.0" prefHeight="310.0" prefWidth="772.0">
+        <TableView fx:id="MainTableView" layoutX="26.0" layoutY="64.0" onMouseClicked="#MouseClickedLoadAptData" prefHeight="310.0" prefWidth="772.0">
             <columns>
                 <TableColumn fx:id="AptIDColumn" prefWidth="42.0" text="ID" />
                 <TableColumn fx:id="TitleColumn" prefWidth="63.0" text="Title" />
@@ -47,9 +47,9 @@
       <Label layoutX="579.0" layoutY="463.0" text="Start Time" />
       <Label layoutX="581.0" layoutY="494.0" text="End Time" />
       <Label layoutX="588.0" layoutY="527.0" text="UserID" />
-      <RadioButton fx:id="AllAptRadio" layoutX="369.0" layoutY="30.0" mnemonicParsing="false" text="All Appointments" />
-      <RadioButton fx:id="WeeklyRadio" layoutX="494.0" layoutY="30.0" mnemonicParsing="false" text="Weekly Appointments" />
-      <RadioButton fx:id="MonthlyRadio" layoutX="647.0" layoutY="30.0" mnemonicParsing="false" text="Monthly Appointments" />
+      <RadioButton fx:id="AllAptRadio" layoutX="369.0" layoutY="30.0" mnemonicParsing="false" onMouseClicked="#OnClickRadioAllApts" text="All Appointments" />
+      <RadioButton fx:id="WeeklyRadio" layoutX="494.0" layoutY="30.0" mnemonicParsing="false" onMouseClicked="#OnClickRadioWeeklyApts" text="Weekly Appointments" />
+      <RadioButton fx:id="MonthlyRadio" layoutX="647.0" layoutY="30.0" mnemonicParsing="false" onMouseClicked="#OnMonthlyRadioAptsClicked" text="Monthly Appointments" />
       <ComboBox fx:id="StartTimeCombo" layoutX="651.0" layoutY="459.0" prefWidth="150.0" />
       <ComboBox fx:id="EndTimeCombo" layoutX="651.0" layoutY="490.0" prefWidth="150.0" />
       <Label layoutX="335.0" layoutY="463.0" text="Start Date" />

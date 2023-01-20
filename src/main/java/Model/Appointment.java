@@ -1,20 +1,13 @@
 package Model;
 
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-
-import java.sql.Timestamp;
 import java.time.*;
-import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 
 public class Appointment {
     private int appointmentID;
     private String appointmentTitle;
-    private String description;
-    private String location;
-    private String type;
+    private String appointmentDescription;
+    private String appointmentLocation;
+    private String appointmentType;
     private LocalDateTime start;
     private LocalDateTime end;
     public int customerID;
@@ -22,20 +15,22 @@ public class Appointment {
     public int contactID;
 
 
-    public Appointment(int appointmentID, String appointmentTitle, String description, String location, String type, LocalDateTime start, LocalDateTime end, int customerID, int userID, int contactID){
+    public Appointment(int appointmentID, String appointmentTitle, String appointmentDescription, String appointmentLocation, String appointmentType, LocalDateTime start, LocalDateTime end, int customerID, int userID, int contactID){
+
         this.appointmentID = appointmentID;
         this.appointmentTitle = appointmentTitle;
-        this.description = description;
-        this.location = location;
-        this.type = type;
+        this.appointmentDescription = appointmentDescription;
+        this.appointmentLocation = appointmentLocation;
+        this.appointmentType = appointmentType;
         this.start = start;
         this.end = end;
         this.customerID = customerID;
         this.userID = userID;
         this.contactID = contactID;
+
     }
-    public String getType(){
-        return type;
+    public String getAppointmentType(){
+        return appointmentType;
     }
     public int getAppointmentID(){
         return appointmentID;
@@ -43,12 +38,12 @@ public class Appointment {
     public String getAppointmentTitle(){
         return appointmentTitle;
     }
-    public String getDescription(){
-        return description;
+    public String getAppointmentDescription(){
+        return appointmentDescription;
     }
 
-    public String getLocation(){
-        return location;
+    public String getAppointmentLocation(){
+        return appointmentLocation;
     }
 
     public LocalDateTime getStart(){
@@ -70,7 +65,6 @@ public class Appointment {
     public int getUserID(){
         return userID;
     }
-
 
 
 
