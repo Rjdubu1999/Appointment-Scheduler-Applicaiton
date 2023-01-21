@@ -101,7 +101,9 @@ public class MainCustomerController implements Initializable {
             Connection connection = DataBaseConnection.openConnection();
             if (!NameField.getText().isEmpty() || !AddressField.getText().isEmpty() ||
                     !PostalCodeField.getText().isEmpty() || !PhoneField.getText().isEmpty() || !CountryCombo.getValue().isEmpty() || !StateCombo.getValue().isEmpty()) {
-                Integer newCustomerID = (int) (Math.random() * 50);
+                Integer newCustomerID = (int) (Math.random() * 200);
+                IDField.setText(newCustomerID.toString());
+
                 int FLDName = 0;
                 for (FLD_DAO fld : FLD_DAO.getAllFLD()) {
                     if(StateCombo.getSelectionModel().getSelectedItem().equals(fld.getDivisionName())){
@@ -222,11 +224,12 @@ public class MainCustomerController implements Initializable {
     }
 
     public void onActionBack(ActionEvent actionEvent) throws IOException{
-        Parent parent = FXMLLoader.load(Main.class.getResource("MainScreen.fxml"));
-        Scene scene = new Scene(parent);
-        Stage returnToMain = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        returnToMain.setScene(scene);
-        returnToMain.show();
+        ((Node) actionEvent.getSource()).getScene().getWindow().hide();
+       // Parent parent = FXMLLoader.load(Main.class.getResource("MainScreen.fxml"));
+        //Scene scene = new Scene(parent);
+       // Stage returnToMain = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+       // returnToMain.setScene(scene);
+       // returnToMain.show();
     }
 
     public void onActionSave(ActionEvent actionEvent) {

@@ -327,6 +327,10 @@ public class MainAppointmentController {
                 for (Appointment appointment : appointmentObservableList) {
                     MainTableView.setItems(appointmentObservableList);
                 }
+            if(AllAptRadio.isSelected()){
+                WeeklyRadio.setSelected(false);
+                MonthlyRadio.setSelected(false);
+            }
         } catch (Exception exception) {
             exception.printStackTrace();
         }
@@ -345,6 +349,10 @@ public class MainAppointmentController {
                     }
                     MainTableView.setItems(weeklyAppointment);
                 });
+            if(WeeklyRadio.isSelected()){
+                AllAptRadio.setSelected(false);
+                MonthlyRadio.setSelected(false);
+            }
 
         }catch (Exception exception){
             exception.printStackTrace();
@@ -365,6 +373,10 @@ public class MainAppointmentController {
                     }
                     MainTableView.setItems(monthlyAppointments);
                 });
+            }
+            if(MonthlyRadio.isSelected()){
+                AllAptRadio.setSelected(false);
+                WeeklyRadio.setSelected(false);
             }
         }catch (Exception exception){
             exception.printStackTrace();
