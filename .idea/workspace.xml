@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0764dce-d9b8-485c-af9e-17f70aa847e5" name="Changes" comment="finally got the data loaded into the table for the appoitnments. Now just getting it to be able to modify and save the updated table.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Data_Access_Object/ReportDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Report.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/ReportByDates.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/ReportByType.java" afterDir="false" />
+    <list default="true" id="c0764dce-d9b8-485c-af9e-17f70aa847e5" name="Changes" comment="working on the reports now! &#10;finish those and then go through and document with JAvaDoc... then should be essentially done. &#10;Gotta get some people to try and break it now too!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MainAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MainAppointmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MainCustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MainCustomerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MainReportsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MainReportsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/MainCustomer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/MainCustomer.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/MainReports.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/MainReports.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -224,7 +217,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674247172045</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="working on the reports now! &#10;finish those and then go through and document with JAvaDoc... then should be essentially done. &#10;Gotta get some people to try and break it now too!">
+      <created>1674326104821</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1674326104821</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -257,6 +257,7 @@
     <MESSAGE value="got the data to load into the table for the customer screen!&#10;Had to alter the module to open Model class to jfx base" />
     <MESSAGE value="-need to get the customer controller to be able to modify still, it doesnt not do exactly what i imagine.&#10;&#10;&#10;-working on adding appointment in appointment controller." />
     <MESSAGE value="finally got the data loaded into the table for the appoitnments. Now just getting it to be able to modify and save the updated table." />
-    <option name="LAST_COMMIT_MESSAGE" value="finally got the data loaded into the table for the appoitnments. Now just getting it to be able to modify and save the updated table." />
+    <MESSAGE value="working on the reports now! &#10;finish those and then go through and document with JAvaDoc... then should be essentially done. &#10;Gotta get some people to try and break it now too!" />
+    <option name="LAST_COMMIT_MESSAGE" value="working on the reports now! &#10;finish those and then go through and document with JAvaDoc... then should be essentially done. &#10;Gotta get some people to try and break it now too!" />
   </component>
 </project>
