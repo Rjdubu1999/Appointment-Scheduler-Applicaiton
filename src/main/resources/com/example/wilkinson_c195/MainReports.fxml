@@ -8,35 +8,6 @@
    <children>
       <TabPane layoutY="64.0" prefHeight="414.0" prefWidth="890.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Appointments By Type">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="299.0" prefWidth="383.0">
-                     <children>
-                        <Label layoutX="126.0" layoutY="14.0" text="Monthly Appointment Totals">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="562.0" layoutY="14.0" text="Appointment Type Totals">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <TableView fx:id="MonthlyTotalsTableView" layoutX="121.0" layoutY="72.0" prefHeight="200.0" prefWidth="240.0">
-                          <columns>
-                            <TableColumn fx:id="MonthlyAptColumn" prefWidth="125.0" text="Monthly " />
-                            <TableColumn fx:id="MonthlyTotalColumn" prefWidth="114.0" text="Total" />
-                          </columns>
-                        </TableView>
-                        <TableView fx:id="TypeAptTableView" layoutX="542.0" layoutY="72.0" prefHeight="200.0" prefWidth="242.0">
-                          <columns>
-                            <TableColumn fx:id="TypeTotalCol" prefWidth="125.0" text="Type" />
-                            <TableColumn fx:id="TypeTotalTotalColumn" prefWidth="116.0" text="Total" />
-                          </columns>
-                        </TableView>
-                     </children></AnchorPane>
-            </content>
-          </Tab>
           <Tab text="Contact Schedules">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="404.0" prefWidth="939.0">
@@ -65,18 +36,47 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-            <Tab onSelectionChanged="#CustomerDataLoad" text="Appointments With Customers">
+          <Tab onSelectionChanged="#AppointmentReportTab" text="Appointments Report">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="299.0" prefWidth="383.0">
+                     <children>
+                        <Label layoutX="126.0" layoutY="14.0" text="Monthly Appointment Totals">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="562.0" layoutY="14.0" text="Appointment Type Totals">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TableView fx:id="MonthlyTotalsTableView" layoutX="121.0" layoutY="72.0" prefHeight="200.0" prefWidth="240.0">
+                          <columns>
+                            <TableColumn fx:id="MonthlyAptColumn" prefWidth="125.0" text="Monthly " />
+                            <TableColumn fx:id="MonthlyTotalColumn" prefWidth="114.0" text="Total" />
+                          </columns>
+                        </TableView>
+                        <TableView fx:id="TypeAptTableView" layoutX="542.0" layoutY="72.0" prefHeight="200.0" prefWidth="242.0">
+                          <columns>
+                            <TableColumn fx:id="TypeTotalCol" prefWidth="125.0" text="Type" />
+                            <TableColumn fx:id="TypeTotalTotalColumn" prefWidth="116.0" text="Total" />
+                          </columns>
+                        </TableView>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab onSelectionChanged="#CustomerDataLoad" text="Division Totals">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label layoutX="323.0" layoutY="32.0" text="Appointments With Customers">
+                        <Label layoutX="323.0" layoutY="32.0" text="Division Totals">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
                         <TableView fx:id="CustomerAptTableView" layoutX="304.0" layoutY="93.0" prefHeight="200.0" prefWidth="284.0">
                           <columns>
-                            <TableColumn fx:id="CustomerNameTotal" prefWidth="140.0" text="Customer Name" />
+                            <TableColumn fx:id="CustomerNameTotal" prefWidth="140.0" text="Divisions" />
                             <TableColumn fx:id="CustomerTotalCol" prefWidth="143.0" text="Total" />
                           </columns>
                         </TableView>

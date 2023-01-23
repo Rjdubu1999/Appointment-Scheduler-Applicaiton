@@ -1,23 +1,31 @@
 package Model;
 
 public class Report {
-    private int customerCount;
-    private String customerName;
-    public String appointmentMonth;
-    public int totalAppointments;
+    private int divisionTotal;
+    private String divisionName;
 
 
-
-    public Report(String customerName, int customerCount){
-        this.customerCount = customerCount;
-        this.customerName = customerName;
+    /**
+     * Creating a class to collect and sum the number of appointments from customers form different divisions
+     * @param
+     * @param
+     */
+    public Report(int divisionTotal, String divisionName){
+        this.divisionTotal = divisionTotal;
+        this.divisionName = divisionName;
     }
 
-    public String getCustomerName(){
-        return customerName;
+    public int getDivisionTotal(){
+        return divisionTotal;
     }
-    public int getCustomerCount(){
-        return customerCount;
+    public String getDivisionName(){
+        return divisionName;
+    }
+    public void setDivisionName(){
+        this.divisionName = divisionName;
+    }
+    public void setDivisionTotal(){
+        this.divisionTotal = divisionTotal;
     }
 
 }

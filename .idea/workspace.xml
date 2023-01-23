@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0764dce-d9b8-485c-af9e-17f70aa847e5" name="Changes" comment="working on the reports now! &#10;finish those and then go through and document with JAvaDoc... then should be essentially done. &#10;Gotta get some people to try and break it now too!">
+    <list default="true" id="c0764dce-d9b8-485c-af9e-17f70aa847e5" name="Changes" comment="Almost done with reports tables. Just fixing up the SQL to load data into the customer report">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MainReportsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MainReportsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Data_Access_Object/ReportDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Data_Access_Object/ReportDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Report.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/MainReports.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/MainReports.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -224,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674326104821</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Almost done with reports tables. Just fixing up the SQL to load data into the customer report">
+      <created>1674350923455</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1674350923455</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -258,6 +267,10 @@
     <MESSAGE value="-need to get the customer controller to be able to modify still, it doesnt not do exactly what i imagine.&#10;&#10;&#10;-working on adding appointment in appointment controller." />
     <MESSAGE value="finally got the data loaded into the table for the appoitnments. Now just getting it to be able to modify and save the updated table." />
     <MESSAGE value="working on the reports now! &#10;finish those and then go through and document with JAvaDoc... then should be essentially done. &#10;Gotta get some people to try and break it now too!" />
-    <option name="LAST_COMMIT_MESSAGE" value="working on the reports now! &#10;finish those and then go through and document with JAvaDoc... then should be essentially done. &#10;Gotta get some people to try and break it now too!" />
+    <MESSAGE value="Almost done with reports tables. Just fixing up the SQL to load data into the customer report" />
+    <option name="LAST_COMMIT_MESSAGE" value="Almost done with reports tables. Just fixing up the SQL to load data into the customer report" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Appointment_Scheduler_Applicaiton$Main.ic" NAME="Main Coverage Results" MODIFIED="1674449888869" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
