@@ -13,8 +13,14 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
 
+/**
+ * @Author Ryan Wilkinson
+ * Software II
+ */
 
-
+/**
+ * Main class which launches the scheduler application
+ */
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
@@ -25,6 +31,11 @@ public class Main extends Application {
         stage.show();
     }
 
+    /**
+     * Creating a method which will launch the application and connect to the MySQL database to retrieve data for use in
+     * this program.
+     * @param args
+     */
     public static void main(String[] args) {
         DataBaseConnection.openConnection();
         launch(args);

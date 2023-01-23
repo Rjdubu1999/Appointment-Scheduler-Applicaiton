@@ -16,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -33,6 +34,7 @@ import java.time.Month;
 public class MainReportsController {
 
 
+    @FXML private Tab FillScheduleTab;
     @FXML private
     TableView<ReportByDates> MonthlyTotalsTableView;
     @FXML private TableColumn<?,?> MonthlyAptColumn;
@@ -74,7 +76,7 @@ public class MainReportsController {
             LocationColumn.setCellValueFactory(new PropertyValueFactory<>("appointmentLocation"));
             TitleColumn.setCellValueFactory(new PropertyValueFactory<>("appointmentTitle"));
             TypeColumn.setCellValueFactory(new PropertyValueFactory<>("appointmentType"));
-            StartColumn.setCellValueFactory(new PropertyValueFactory<>("Start"));
+            StartColumn.setCellValueFactory(new PropertyValueFactory<>("start"));
             EndColumn.setCellValueFactory(new PropertyValueFactory<>("end"));
             CustomerID.setCellValueFactory(new PropertyValueFactory<>("customerID"));
             ContactID.setCellValueFactory(new PropertyValueFactory<>("contactID"));
@@ -134,104 +136,51 @@ public class MainReportsController {
 }
 
     public void AppointmentReportTab(Event event) throws SQLException {
-      /**  try {
+        try {
             ObservableList<Appointment> getAllAppointments = AppointmentDAO.getAllAppointment();
-            ObservableList<Month> appointmentMonths = FXCollections.observableArrayList();
-            ObservableList<Month> monthOfAppointments = FXCollections.observableArrayList();
-
+            ObservableList<Month> aptMonthList = FXCollections.observableArrayList();
+            ObservableList<Month> monthofApts = FXCollections.observableArrayList();
             ObservableList<String> appointmentType = FXCollections.observableArrayList();
-            ObservableList<String> uniqueAppointment = FXCollections.observableArrayList();
+            ObservableList<String> Appointment = FXCollections.observableArrayList();
+            ObservableList<ReportByType> Type = FXCollections.observableArrayList();
+            ObservableList<ReportByDates> Months = FXCollections.observableArrayList();
 
-            ObservableList<ReportByType> reportType = FXCollections.observableArrayList();
-            ObservableList<ReportByDates> reportMonths = FXCollections.observableArrayList();
-
-
-            //IDE converted to Lambda
             getAllAppointments.forEach(appointments -> {
                 appointmentType.add(appointments.getAppointmentType());
             });
 
-            //IDE converted to Lambda
-            getAllAppointments.stream().map(appointment -> {
-                return appointment.getStart().getMonth();
-            }).forEach(appointmentMonths::add);
+            getAllAppointments.stream().map(appointment -> appointment.getStart().getMonth()).forEach(aptMonthList::add);
 
-            //IDE converted to Lambda
-            appointmentMonths.stream().filter(month -> {
-                return !monthOfAppointments.contains(month);
-            }).forEach(monthOfAppointments::add);
+            aptMonthList.stream().filter(month -> !monthofApts.contains(month)).forEach(monthofApts::add);
 
             for (Appointment appointments: getAllAppointments) {
                 String appointmentsAppointmentType = appointments.getAppointmentType();
-                if (!uniqueAppointment.contains(appointmentsAppointmentType)) {
-                    uniqueAppointment.add(appointmentsAppointmentType);
+                if (!Appointment.contains(appointmentsAppointmentType)) {
+                    Appointment.add(appointmentsAppointmentType);
                 }
             }
 
-            for (Month month: monthOfAppointments) {
-                int totalMonth = Collections.frequency(appointmentMonths, month);
+            for (Month month: monthofApts) {
+                int totalMonth = Collections.frequency(aptMonthList, month);
                 String monthName = month.name();
                 ReportByDates appointmentMonth = new ReportByDates(monthName, totalMonth);
-                reportMonths.add(appointmentMonth);
+                Months.add(appointmentMonth);
             }
-            MonthlyTotalsTableView.setItems(reportMonths);
+            MonthlyTotalsTableView.setItems(Months);
 
-            for (String type: uniqueAppointment) {
+            for (String type: Appointment) {
                 String typeToSet = type;
                 int typeTotal = Collections.frequency(appointmentType, type);
                 ReportByType appointmentTypes = new ReportByType(typeToSet, typeTotal);
-                reportType.add(appointmentTypes);
+                Type.add(appointmentTypes);
             }
-            TypeAptTableView.setItems(reportType);
+            TypeAptTableView.setItems(Type);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-    } **/
-        try{
-            ObservableList<Appointment> getAppointments = AppointmentDAO.getAllAppointment();
-            ObservableList<Month> monthObservableList = FXCollections.observableArrayList();
-            ObservableList<Month> appointmentMonth = FXCollections.observableArrayList();
-            ObservableList<String> typeOfAppointment = FXCollections.observableArrayList();
-            ObservableList<String> Appointment = FXCollections.observableArrayList();
-            ObservableList<ReportByType> reportType = FXCollections.observableArrayList();
-            ObservableList<ReportByDates> reportMonth = FXCollections.observableArrayList();
-
-            getAppointments.forEach(appointment -> {
-                typeOfAppointment.add(appointment.getAppointmentType());
-            });
-            getAppointments.stream().map(appointment -> {
-                return appointment.getStart().getMonth();
-
-            }).forEach(appointmentMonth::add);
-
-            appointmentMonth.stream().filter(month -> {
-                return !appointmentMonth.contains(month);
-            }).forEach(appointmentMonth::add);
-            for(Appointment appointment: getAppointments){
-                String appointmentType = appointment.getAppointmentType();
-                if(!Appointment.contains(appointmentType)){
-                    Appointment.add(appointmentType);
-                }
-                for(Month month: appointmentMonth){
-                    int monthTotal = Collections.frequency(monthObservableList,month);
-                    String monthName = month.name();
-                    ReportByDates appointmentDate = new ReportByDates(monthName, monthTotal);
-                    reportMonth.add(appointmentDate);
-                }
-                MonthlyTotalsTableView.setItems(reportMonth);
-            }
-            for(String aptType: Appointment){
-                String setType = aptType;
-                int totalType = Collections.frequency(typeOfAppointment,aptType );
-                ReportByType typesOfApts = new ReportByType(setType, totalType);
-                reportType.add(typesOfApts);
-            }
-            TypeAptTableView.setItems(reportType);
-        }catch (Exception exception){
-            exception.printStackTrace();
-        }
     }
+
 }
 
 

@@ -33,6 +33,16 @@ import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import static Utilities.Time.convertTOUTC;
+/**
+ * @Author Ryan Wilkinson
+ * C195  - Software II
+ */
+
+/**
+ * Creating a controller class to enable the user to go to the add appointment screen to add appointments,
+ * loads current appointments in the MySQL Database, modify appointments by loading the appointment information into
+ * the fields and allows users to save the updated appointments
+ */
 public class MainAppointmentController {
 
     @FXML
@@ -90,11 +100,14 @@ public class MainAppointmentController {
     @FXML
     private
     TableView<Appointment> MainTableView;
-    private boolean monthlyBool;
-    private Appointment selectedAppointment;
-    private Customer selectedCustomer;
 
 
+    /**
+     * @throws SQLException Initializes the controller class and sets the columns in the table to the
+     * associated values in the MySQL database where it gets the information from the DAO Appointment class
+     * it also sets the radio button of All appointments to be active and the others to be false, which shows all
+     * of the appointments in the database
+     */
     public void initialize() throws SQLException {
         ObservableList<Appointment> allAppointments = AppointmentDAO.getAllAppointment();
         AptIDColumn.setCellValueFactory(new PropertyValueFactory<>("appointmentID"));
@@ -115,6 +128,11 @@ public class MainAppointmentController {
 
     }
 
+    /**
+     * This method will load all of the data from the appointment in the table when clicked into
+     * the fields at the bottom of the screen automatically so that the user may modify and update
+     * the appointments and any information associated with them
+     */
     @FXML
     void MouseClickedLoadAptData() {
         try {
@@ -168,6 +186,12 @@ public class MainAppointmentController {
 
     }
 
+    /**
+     * @param actionEvent this method will take the user to the Addappointment.fxml file
+     *                    where they can add new appointments to the main appointment table and the
+     *                    MySQL database.
+     * @throws IOException
+     */
     public void onActionAddAppointment(ActionEvent actionEvent) throws IOException {
         Parent appointmentButton = FXMLLoader.load(Main.class.getResource("AddAppointment.fxml"));
         Scene scene = new Scene(appointmentButton);
@@ -177,14 +201,19 @@ public class MainAppointmentController {
 
     }
 
+    /**
+     * @param actionEvent This method takes the user back to main screen and hides the current window
+     */
     @FXML
     public void onActionBack(ActionEvent actionEvent) {
         ((Node) actionEvent.getSource()).getScene().getWindow().hide();
     }
 
 
-
-
+    /**
+     * @param actionEvent This method will delete a selected appointment and the information from the database as well
+     * @throws Exception
+     */
     public void onActionDeleteAppointment(ActionEvent actionEvent) throws Exception {
         try {
             Connection connection = DataBaseConnection.openConnection();
@@ -203,6 +232,12 @@ public class MainAppointmentController {
         }
     }
 
+    /**
+     * @param event This method allows the user to update and modify the appointment information that is brought
+     *              into the fields below the main table by clicking an appointment, loading the information into the fields,
+     *              then updating and modifying the fields and clicking save to update the appointment in the main
+     *              table, as well as the information in the MySQL database
+     */
     @FXML
     public void onActionModifyAppointment(ActionEvent event) {
         try {
@@ -228,7 +263,9 @@ public class MainAppointmentController {
                 ZonedDateTime zdtEnd = ZonedDateTime.of(dtEnd, ZoneId.systemDefault());
                 ZonedDateTime estConversionStart = zdtStart.withZoneSameInstant(ZoneId.of("America/New_York"));
                 ZonedDateTime estConversionEnd = zdtEnd.withZoneSameInstant(ZoneId.of("America/New_York"));
-
+                /**
+                 * Adding logic errors to the data input into the fields when a user wants to modify the selected appointment
+                 */
                 if (estConversionStart.toLocalDate().getDayOfWeek().getValue() == (DayOfWeek.SATURDAY.getValue()) || estConversionStart.toLocalDate().getDayOfWeek().getValue() == (DayOfWeek.SUNDAY.getValue()) || estConversionEnd.toLocalDate().getDayOfWeek().getValue() == (DayOfWeek.SATURDAY.getValue()) || estConversionEnd.toLocalDate().getDayOfWeek().getValue() == (DayOfWeek.SUNDAY.getValue())) {
                     Alert alert = new Alert(Alert.AlertType.ERROR, "This day is outside of our (Monday-Friday) business operation days. ");
                     Optional<ButtonType> error = alert.showAndWait();
@@ -291,7 +328,9 @@ public class MainAppointmentController {
                 String endTimeGet = EndTimeCombo.getValue();
                 String utcConversionStart = convertTOUTC(startDateFormat + " " + startTimeGet + ":00");
                 String utcConversionEnd = convertTOUTC(endDateFormat + " " + endTimeGet + ":00");
-
+                /**
+                 * updates the appointment information in the database with the update query
+                 */
                 String query = "UPDATE appointments SET Appointment_ID = ?, Title = ?, Description = ?, Location = ?, Type = ?, Start = ?, End = ?, Last_Update = ?, Last_Updated_By = ?, Customer_ID = ?, User_ID = ?, Contact_ID = ? WHERE Appointment_ID = ?";
                 DataBaseConnection.setPreparedStatement(DataBaseConnection.getConnection(), query);
                 PreparedStatement preparedStatement = DataBaseConnection.getPreparedStatement();
@@ -320,6 +359,11 @@ public class MainAppointmentController {
 
     }
 
+    /**
+     * @param mouseEvent This method will load all of the appointments into the main table when this radio button is
+     *                   clicked and will also set the other radio buttons to not selected when it is selected
+     * @throws SQLException
+     */
     public void OnClickRadioAllApts(MouseEvent mouseEvent) throws SQLException {
         try {
             ObservableList<Appointment> appointmentObservableList = AppointmentDAO.getAllAppointment();
@@ -336,6 +380,11 @@ public class MainAppointmentController {
         }
     }
 
+    /**
+     * @param mouseEvent This method sets the appointment table to all of the appointments for the week and
+     *                   sets the other radio buttons to not selected when it has been selected
+     * @throws SQLException
+     */
     public void OnClickRadioWeeklyApts(MouseEvent mouseEvent) throws SQLException {
         try {
             ObservableList<Appointment> appointmentObservableList = AppointmentDAO.getAllAppointment();
@@ -360,6 +409,11 @@ public class MainAppointmentController {
     }
 
 
+    /**
+     * @param mouseEvent this method sets the main appointment table to only monthly appointments and sets the
+     *                   All and weekly radio buttons to not selected when it is selected
+     * @throws SQLException
+     */
     public void OnMonthlyRadioAptsClicked(MouseEvent mouseEvent) throws SQLException {
         try{
             ObservableList<Appointment> appointmentObservableList = AppointmentDAO.getAllAppointment();

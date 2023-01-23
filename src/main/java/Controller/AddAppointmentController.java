@@ -30,6 +30,15 @@ import java.util.ResourceBundle;
 import static Utilities.Time.convertTOUTC;
 
 
+/**
+ * @Author Ryan Wilkinson
+ * C195 - Software II
+ *
+ * Controller for the Appointment Model and DAO of Appointment
+ * Which enables the user to fill in the appointment fields and add it
+ * the Main appointment table
+ */
+
 
 public class AddAppointmentController   {
 
@@ -48,8 +57,10 @@ public class AddAppointmentController   {
     @FXML private ComboBox ContactCombo;
 
 
-
-
+    /**
+     * @throws SQLException Initiializing the start and end time dropdown boxes and filling in the contact combo box as
+     * well so that the user can add them to the main Appointment table
+     */
     @FXML
     public void initialize() throws SQLException {
 
@@ -74,6 +85,12 @@ public class AddAppointmentController   {
     }
 
 
+    /**
+     * @param actionEvent This method allows for a user to click save and then load the information they have added in the fields
+     *                    to be added into the Main appointment table as well as load all of the input information into
+     *                    the MySQL database
+     * @throws IOException
+     */
     public void onActionSave(ActionEvent actionEvent) throws IOException {
         try {
 
@@ -98,7 +115,7 @@ public class AddAppointmentController   {
                 String appointmentStartTime = StartTime.getValue();
                 String endDateFormat = EndDate.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
                 String appointmentEndTime = EndField.getValue();
-                System.out.println("thisDate + thisStart " + startDateFormat + " " + appointmentStartTime + ":00");
+               // System.out.println("thisDate + thisStart " + startDateFormat + " " + appointmentStartTime + ":00");
                 String startUTC = convertTOUTC(startDateFormat + " " + appointmentStartTime + ":00");
                 String endUTC = convertTOUTC(endDateFormat + " " + appointmentEndTime + ":00");
                 LocalTime ltStart = LocalTime.parse(StartTime.getValue(), dateTimeFormatter);
@@ -124,7 +141,9 @@ public class AddAppointmentController   {
 
                 LocalTime businessHours = LocalTime.of(8, 0, 0);
                 LocalTime closedHours = LocalTime.of(22, 0, 0);
-
+                /**
+                 * Adding logical errors so that correct information can be input into the main appointment table.
+                 */
                 if (startAppointmentDayToCheckInt < startOfWorkWeek || startAppointmentDayToCheckInt > endOfWorkWeek || endAppointmentDayToCheckInt < startOfWorkWeek || endAppointmentDayToCheckInt > endOfWorkWeek) {
                     Alert alert = new Alert(Alert.AlertType.ERROR, "Day is outside of business operations (Monday-Friday)");
                     Optional<ButtonType> error = alert.showAndWait();
@@ -183,13 +202,15 @@ public class AddAppointmentController   {
                     if (customerID == appointment.getCustomerID() && (newAppointmentID != appointment.getAppointmentID()) &&
 
                             (dtEnd.isAfter(checkStart)) && (dtEnd.isBefore(checkEnd))) {
-                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "End time overlaps with existing appointment.");
-                        Optional<ButtonType> confirmation = alert.showAndWait();
+                        Alert alert = new Alert(Alert.AlertType.ERROR, "End time overlaps with existing appointment.");
+                        Optional<ButtonType> error = alert.showAndWait();
                         System.out.println("End time overlaps with existing appointment.");
                         return;
                     }
                 }
-
+/**
+ * SQL query that inputs the appointment information from all of the fields into the MySQL Database
+ */
                 String query = "INSERT INTO appointments (Appointment_ID, Title, Description, Location, Type, Start, End, Create_Date, Created_By, Last_Update, Last_Updated_By, Customer_ID, User_ID, Contact_ID) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
                 DataBaseConnection.setPreparedStatement(DataBaseConnection.getConnection(), query);
@@ -225,8 +246,11 @@ public class AddAppointmentController   {
     }
 
 
-
+    /**
+     * @param actionEvent This method hides the current window and brings you back to the MainAppointment.fxml screen
+     */
     public void onActionCancel(ActionEvent actionEvent) {
+        ((Node) actionEvent.getSource()).getScene().getWindow().hide();
 
     }
 }

@@ -32,6 +32,15 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+/**
+ * @Author Ryan Wilkinson
+ * C195 -- Software II
+ */
+
+/**
+ * Creating a controller class to enable a user to add, modify and delete
+ * customers and the data associated with them in the MySQL database
+ */
 public class MainCustomerController implements Initializable {
 
 
@@ -57,15 +66,12 @@ public class MainCustomerController implements Initializable {
     @FXML private ComboBox<String> StateCombo;
 
 
-
-    private Customer selectedCustomer;
-
-   // public static boolean saveCustomer(ActionEvent event){
-
-
-
-
-
+    /**
+     * @param url Initializes the controller class and sets the main customer table to
+     *            hold the values the have been typed into the fields below the table. This information
+     *            is then input into the MySql database
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     try{
@@ -96,6 +102,10 @@ public class MainCustomerController implements Initializable {
     }
     }
 
+    /**
+     * This method allows a user to add a customer and their associated information into the MySqL database and the
+     * main customer table. It assigns the customer a random id up to the number 200
+     */
     public void onActionAdd() {
         try {
             Connection connection = DataBaseConnection.openConnection();
@@ -109,7 +119,9 @@ public class MainCustomerController implements Initializable {
                     if(StateCombo.getSelectionModel().getSelectedItem().equals(fld.getDivisionName())){
                         FLDName = fld.getDivision_ID();
                     }
-
+/**
+ * Insert query to input the information from the fields into the database
+ */
                 }
                 String query = "INSERT INTO customers (Customer_ID, Customer_Name, Address, Postal_Code, Phone, Create_Date, Created_By, Last_Update, Last_Updated_By, Division_ID) VALUES(?,?,?,?,?,?,?,?,?,?)";
                 DataBaseConnection.setPreparedStatement(DataBaseConnection.getConnection(),query);
@@ -141,24 +153,15 @@ public class MainCustomerController implements Initializable {
 
     }
 
+    /**
+     * @param actionEvent This method allows a user to highlight a customer from the table then click modify, which will
+     *                    load all of the users information into the fields to be modified and updated which will then
+     *                    be saved into the table and database when the user clicks save
+     * @throws IOException
+     * @throws SQLException
+     */
     public void onActionModify(ActionEvent actionEvent) throws IOException, SQLException {
-      /**  Customer selectedCustomer = customerTableView.getSelectionModel().getSelectedItem();
-        int customerIndex = customerTableView.getSelectionModel().getSelectedIndex();
-        if (selectedCustomer == null) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Select Customer");
-            alert.setContentText("No Customer Was Selected To Modify");
-            alert.showAndWait();
-            return;
-        }
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ModifyCustomer.fxml"));
-        Scene scene= new Scene(fxmlLoader.load(), 550, 700);
-        ModifyCustomerController.customerToModify(customerIndex, selectedCustomer);
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-     //   Scene scene = new Scene(root, 600, 600);
-        stage.setScene(scene);
-        stage.show();
-    } **/
+
         try{
             DataBaseConnection.openConnection();
             Customer customer = (Customer) customerTableView.getSelectionModel().getSelectedItem();
@@ -193,6 +196,11 @@ public class MainCustomerController implements Initializable {
 
     }
 
+    /**
+     * @param actionEvent This method allows the user to delete a customer from the main table and also
+     *                    delete their associated data in the databse
+     * @throws Exception
+     */
     public void onActionDelete(ActionEvent actionEvent) throws Exception {
         Connection connection = DataBaseConnection.openConnection();
 
@@ -225,6 +233,9 @@ public class MainCustomerController implements Initializable {
 
     public void onActionBack(ActionEvent actionEvent) throws IOException{
         ((Node) actionEvent.getSource()).getScene().getWindow().hide();
+
+        //This way for some reason kept keeping dulicates of the same screen.
+        //Will use .hide() instead, as it does not open multiple windows
        // Parent parent = FXMLLoader.load(Main.class.getResource("MainScreen.fxml"));
         //Scene scene = new Scene(parent);
        // Stage returnToMain = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -232,6 +243,12 @@ public class MainCustomerController implements Initializable {
        // returnToMain.show();
     }
 
+    /**
+     * @param actionEvent This method allows a user to save the updated information that a user has input
+     *                    for a customer after it has been modified. It will update the table and the database
+     *                    information assocaited with it. After save has been clicked it will clear the
+     *                    fields
+     */
     public void onActionSave(ActionEvent actionEvent) {
         try {
             Connection connection = DataBaseConnection.openConnection();
@@ -273,6 +290,10 @@ public class MainCustomerController implements Initializable {
         }
     }
 
+    /**
+     * @param actionEvent Fills the combo box with all of the countries to be selected
+     * @throws SQLException
+     */
     public void FillCountryCombo(ActionEvent actionEvent) throws  SQLException{
         try{
             DataBaseConnection.openConnection();

@@ -4,11 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0764dce-d9b8-485c-af9e-17f70aa847e5" name="Changes" comment="Almost done with reports tables. Just fixing up the SQL to load data into the customer report">
+    <list default="true" id="c0764dce-d9b8-485c-af9e-17f70aa847e5" name="Changes" comment="Almost done with reports tables. Now getting the totals for type and month completed">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AddAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AddAppointmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MainAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MainAppointmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MainCustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MainCustomerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MainReportsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MainReportsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Data_Access_Object/ReportDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Data_Access_Object/ReportDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Report.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/wilkinson_c195/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/wilkinson_c195/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/MainReports.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/MainReports.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,7 +58,7 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -233,7 +237,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674350923455</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Almost done with reports tables. Now getting the totals for type and month completed">
+      <created>1674454575527</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1674454575527</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -268,7 +279,8 @@
     <MESSAGE value="finally got the data loaded into the table for the appoitnments. Now just getting it to be able to modify and save the updated table." />
     <MESSAGE value="working on the reports now! &#10;finish those and then go through and document with JAvaDoc... then should be essentially done. &#10;Gotta get some people to try and break it now too!" />
     <MESSAGE value="Almost done with reports tables. Just fixing up the SQL to load data into the customer report" />
-    <option name="LAST_COMMIT_MESSAGE" value="Almost done with reports tables. Just fixing up the SQL to load data into the customer report" />
+    <MESSAGE value="Almost done with reports tables. Now getting the totals for type and month completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Almost done with reports tables. Now getting the totals for type and month completed" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Appointment_Scheduler_Applicaiton$Main.ic" NAME="Main Coverage Results" MODIFIED="1674449888869" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

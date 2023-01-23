@@ -22,6 +22,12 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 
+/**
+ * @Author Ryan Wilkinson
+ * C195 - Software II
+ * Creating a controller class which enables a User to login to the application by inputing the correct information into the
+ * MySQL database. If the incorrect information is entered into the log in fields then the login will deny them access.
+ */
 public class LoginController implements Initializable {
     @FXML
     private Label AnchorPaneLanguage;
@@ -43,11 +49,22 @@ public class LoginController implements Initializable {
     private String loginErrorText;
 
     private static User user;
+
+    /**
+     * @return getter for user class
+     */
     public static User getUser(){
         return user;
     }
 
 
+    /**
+     * @param event Method which the user types in a username and password into the fields where the information will be
+     *              validated or invalidated through a boolean allowing or not allowing the user. If the information entered
+     *              is correct then the login screen will go away and bring up the MainScreen.fxml where the user may use
+     *              the application
+     * @throws IOException
+     */
     public void OnActionLogin(ActionEvent event) throws IOException {
         String username = UsernameTextField.getText();
         String password = PasswordTextField.getText();
@@ -67,30 +84,20 @@ public class LoginController implements Initializable {
             alert.showAndWait();
         }
     }
+
+    /**
+     * @return gets the locale of the user
+     */
     public static Locale getCurrentLocale(){
         return Locale.getDefault();
     }
 
 
-   // Locale[] applicationLocales = {
-     //       Locale.ENGLISH,
-     //       Locale.FRENCH
-  //  };
-
-
-  /**  public void setLoginInfo(ResourceBundle languages) {
-        Locale locale = getCurrentLocale();
-         languages = ResourceBundle.getBundle("Languages/Language", locale);
-        UsernameLabel.setText(languages.getString("username"));
-        PasswordLabel.setText(languages.getString("password"));
-        LogInButton.setText(languages.getString("login"));
-        AnchorPaneMessage.setText(languages.getString("message"));
-        AnchorPaneLanguage.setText(languages.getString("language"));
-        loginErrorTitle = languages.getString("errortitle");
-        loginErrorHeader = languages.getString("errorheader");
-        loginErrorText = languages.getString("errortext");
-
-    } **/
+    /**
+     * @param url Initializes the class and uses the resource bundle of languages to change the language
+     *            of the login menu text to english or french depending on the system default of the users computer
+     * @param languages
+     */
     @Override
     public void initialize(URL url, ResourceBundle languages) {
         Locale locale = Locale.getDefault();
@@ -103,14 +110,7 @@ public class LoginController implements Initializable {
         loginErrorTitle = languages.getString("errortitle");
         loginErrorHeader = languages.getString("errorheader");
         loginErrorText = languages.getString("errortext");
-    /**try{
-        setLoginInfo(languages);
 
-
-    }catch (Exception e){
-        System.out.println("Error " + e.getMessage());
-    }
-**/
     }
 
 
