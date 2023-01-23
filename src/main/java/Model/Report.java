@@ -6,7 +6,8 @@ public class Report {
 
 
     /**
-     * Creating a class to collect and sum the number of appointments from customers form different divisions
+     * Creating a class to collect and sum the number of appointments from customers form different divisions that
+     * will be used in the main report controller to display the data
      * @param
      * @param
      */
@@ -18,12 +19,20 @@ public class Report {
     public int getDivisionTotal(){
         return divisionTotal;
     }
+
+    /**
+     * @return gets division name
+     */
     public String getDivisionName(){
         return divisionName;
     }
     public void setDivisionName(){
         this.divisionName = divisionName;
     }
+
+    /**
+     * sets division total
+     */
     public void setDivisionTotal(){
         this.divisionTotal = divisionTotal;
     }

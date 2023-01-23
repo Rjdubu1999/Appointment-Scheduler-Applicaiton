@@ -14,18 +14,23 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * @Author Ryan Wilkinson
+ * C195 -- Software II
+ */
+
+/**
+ * Creating class controller for the main screen which will enable the user to select different screens to
+ * use the program
+ */
 public class MainScreenController implements Initializable {
 
 
-
-
-
-
-
-
-
-
-
+    /**
+     * @param actionEvent This method allows the user to go to the main appointment screen to add, delete, and update
+     *                    appointments
+     * @throws IOException
+     */
     public void onActionAppointmentsScreen(ActionEvent actionEvent) throws IOException {
         try{
             Stage stage = new Stage();
@@ -38,6 +43,10 @@ public class MainScreenController implements Initializable {
         }
     }
 
+    /**
+     * @param actionEvent This method allows the user to go to the main customer screen to add, delete and update customers
+     * @throws IOException
+     */
     public void onActionCustomerScreen(ActionEvent actionEvent) throws IOException {
         try{
             Stage stage = new Stage();
@@ -50,6 +59,11 @@ public class MainScreenController implements Initializable {
         }
     }
 
+    /**
+     * @param actionEvent This method will allow the user to go to the main report screen which will allow
+     *                    the user to view the reports about customers and appointments
+     * @throws IOException
+     */
     public void onActionReportScreen(ActionEvent actionEvent) throws IOException{
         try{
             Stage stage = new Stage();
@@ -62,9 +76,8 @@ public class MainScreenController implements Initializable {
         }
     }
 
-    public void onActionLogScreen(ActionEvent actionEvent) throws IOException {
 
-    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

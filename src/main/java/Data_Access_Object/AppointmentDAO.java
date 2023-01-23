@@ -11,9 +11,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 
+/**
+ * @Author Ryan Wilkinson
+ */
+
+/**
+ * This class creates a data access object for the appointment data in the MySQL database
+ */
 public class AppointmentDAO {
 
 
+    /**
+     * @return This method gets all of the appoints information from the MySQL Database
+     * @throws SQLException
+     */
     public static ObservableList<Appointment> getAllAppointment()throws SQLException{
         ObservableList<Appointment> appointmentObservableList = FXCollections.observableArrayList();
         String query = "SELECT * from appointments";
@@ -36,6 +47,12 @@ public class AppointmentDAO {
         return appointmentObservableList;
     }
 
+    /**
+     * @param customer This method will allow a user to delete an appoint in the MysQL database
+     * @param connection
+     * @return
+     * @throws SQLException
+     */
     public static int deleteAppointment(int customer, Connection connection) throws SQLException{
         String query = "DELETE FROM appointments WHERE Appointment_ID =?";
         PreparedStatement preparedStatement = connection.prepareStatement(query);

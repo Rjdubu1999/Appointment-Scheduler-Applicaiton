@@ -9,13 +9,25 @@ import javax.xml.transform.Result;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+/**
+ * @Author Ryan Wilkinson
+ * C195 - Software II
+ */
 
+/**
+ * Creating a data access object that extends the User model class
+ */
 public class USERDAO extends User {
+    /**
+     * @param usedID super constructor for the USERDAO class
+     * @param userName
+     * @param password
+     */
     public USERDAO(int usedID, String userName, String password){
         super();
     }
 
-    public static int userValidation(String username, String password){
+   /** public static int userValidation(String username, String password){
         try{
             String query = "SELECT * FROM users WHERE User_Name='" + username + "' AND password='" + password + "'";
             PreparedStatement preparedStatement = DataBaseConnection.getConnection().prepareStatement(query);
@@ -27,9 +39,13 @@ public class USERDAO extends User {
         }catch (SQLException sqlException){
             sqlException.printStackTrace();
         } return -1;
-    }
+    } **/
 
-
+    /**
+     * gets all user data from the user table in the MYSQL DATABASE
+     * @return
+     * @throws SQLException
+     */
     public static ObservableList<USERDAO> getAllUser()throws SQLException{
         ObservableList<USERDAO> userdaoObservableList = FXCollections.observableArrayList();
         String query  = "SELECT * from users";

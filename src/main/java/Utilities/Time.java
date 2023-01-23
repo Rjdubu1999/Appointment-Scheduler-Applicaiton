@@ -6,9 +6,17 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * @Author Ryan Wilkinson
+ * C195 - Software II
+ */
 public class Time {
 
 
+    /**
+     * @param dateTime This utility method will be used to convert the times for appointments into UTC
+     * @return
+     */
     public static String convertTOUTC(String dateTime){
         Timestamp timestamp = Timestamp.valueOf(String.valueOf(dateTime));
         LocalDateTime localDateTime = timestamp.toLocalDateTime();

@@ -4,16 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0764dce-d9b8-485c-af9e-17f70aa847e5" name="Changes" comment="Almost done with reports tables. Now getting the totals for type and month completed">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="c0764dce-d9b8-485c-af9e-17f70aa847e5" name="Changes" comment="Doing JavaDocs now, and going to make sure everything is peachy">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AddAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AddAppointmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MainAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MainAppointmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MainCustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MainCustomerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MainReportsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MainReportsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/wilkinson_c195/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/wilkinson_c195/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/MainReports.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/MainReports.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MainScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MainScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/ModifyAppointmentController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/ModifyCustomerController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Data_Access_Object/AppointmentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Data_Access_Object/AppointmentDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Data_Access_Object/ContactDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Data_Access_Object/ContactDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Data_Access_Object/CountryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Data_Access_Object/CountryDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Data_Access_Object/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Data_Access_Object/CustomerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Data_Access_Object/FLD_DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Data_Access_Object/FLD_DAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Data_Access_Object/ReportDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Data_Access_Object/ReportDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Data_Access_Object/USERDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Data_Access_Object/USERDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Appointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Appointment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Contact.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Contact.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Country.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/DataBaseAppointment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/DataBaseCustomer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/DatabaseUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/DatabaseUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/FLD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/FLD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Report.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ReportByDates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ReportByDates.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ReportByType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ReportByType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/DataBaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/DataBaseConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/Logger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/Time.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/Time.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,7 +262,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674454575527</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Doing JavaDocs now, and going to make sure everything is peachy">
+      <created>1674499845813</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1674499845813</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -280,7 +305,8 @@
     <MESSAGE value="working on the reports now! &#10;finish those and then go through and document with JAvaDoc... then should be essentially done. &#10;Gotta get some people to try and break it now too!" />
     <MESSAGE value="Almost done with reports tables. Just fixing up the SQL to load data into the customer report" />
     <MESSAGE value="Almost done with reports tables. Now getting the totals for type and month completed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Almost done with reports tables. Now getting the totals for type and month completed" />
+    <MESSAGE value="Doing JavaDocs now, and going to make sure everything is peachy" />
+    <option name="LAST_COMMIT_MESSAGE" value="Doing JavaDocs now, and going to make sure everything is peachy" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Appointment_Scheduler_Applicaiton$Main.ic" NAME="Main Coverage Results" MODIFIED="1674449888869" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

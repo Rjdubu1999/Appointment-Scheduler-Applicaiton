@@ -31,6 +31,11 @@ import java.util.Objects;
 import java.util.Collections;
 import java.time.Month;
 
+/**
+ * Creating a Report Class Controller that will hold the information which summarises the data in the tables
+ * and database throughout the program and will store it into various tables that are held in multiple tabs
+ */
+
 public class MainReportsController {
 
 
@@ -58,11 +63,18 @@ public class MainReportsController {
     @FXML private TableColumn<?,?> ContactID;
     @FXML private TableColumn<?,?> UserID;
 
+    /**
+     * @param actionEvent Returns the user to the mainscreen
+     * @throws IOException
+     */
     public void onActionReturnToMain(ActionEvent actionEvent) throws IOException {
         ((Node) actionEvent.getSource()).getScene().getWindow().hide();
     }
 
 
+    /**
+     * @throws SQLException initializes the class and loads the data into the tables for each tab
+     */
     public void initialize() throws SQLException{
 
             CustomerNameTotal.setCellValueFactory(new PropertyValueFactory<>("divisionName"));
@@ -122,6 +134,9 @@ public class MainReportsController {
     }
 
 
+    /**
+     * @throws SQLException Loads the report data regarding the divisions and the numbers of them into each table
+     */
     public void CustomerDataLoad() throws SQLException {
     try{
         ObservableList<Report> divisions = ReportDAO.getDivision();
@@ -135,6 +150,11 @@ public class MainReportsController {
 
 }
 
+    /**
+     * @param event This method loads the report information for the month table and the appointment type table
+     *              and the numbers each category has
+     * @throws SQLException
+     */
     public void AppointmentReportTab(Event event) throws SQLException {
         try {
             ObservableList<Appointment> getAllAppointments = AppointmentDAO.getAllAppointment();

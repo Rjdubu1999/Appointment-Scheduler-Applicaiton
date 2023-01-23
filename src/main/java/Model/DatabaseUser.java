@@ -10,6 +10,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
+/**
+ * @Author Ryan Wilkinson
+ * C195 - Software II
+ */
+
+/**
+ * creating a database user class that has a login validation method
+ */
 public class DatabaseUser {
 
     private static User activeUser;
@@ -18,6 +26,12 @@ public class DatabaseUser {
         return activeUser;
     }
 
+    /**
+     * @param username this boolean checks the information input into the login controller to validate the
+     *                 user
+     * @param password
+     * @return
+     */
     public static Boolean login(String username, String password) {
         try {
             Statement statement = DataBaseConnection.getConnection().createStatement();

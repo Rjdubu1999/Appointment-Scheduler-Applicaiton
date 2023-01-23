@@ -9,13 +9,30 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * @Author Ryan Wilkinson
+ * C195 -- Software II
+ */
+
+/**
+ * Creating a first level division data access object that extend the first level division model
+ */
 public class FLD_DAO  extends FLD {
 
 
+    /**
+     * @param division_ID super constructor for the DAO class
+     * @param divisionName
+     * @param country_ID
+     */
     public FLD_DAO(int division_ID, String divisionName, int country_ID) {
         super(division_ID, divisionName, country_ID);
     }
 
+    /**
+     * @return gets all data from the first level division table in the MYSQL database
+     * @throws SQLException
+     */
     public static ObservableList<FLD_DAO> getAllFLD() throws SQLException{
         ObservableList<FLD_DAO> fld_daoObservableList = FXCollections.observableArrayList();
         String query = "SELECT * from first_level_divisions";

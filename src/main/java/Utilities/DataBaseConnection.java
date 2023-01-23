@@ -21,6 +21,10 @@ public class DataBaseConnection {
     private static String password = "Passw0rd!"; // Password
     public static Connection connection;  // Connection Interface
 
+    /**
+     * @return This method opens a connection to the MYSQL database and outputs a success text when it has done
+     * so in the console
+     */
     public static Connection openConnection() {
         try {
             Class.forName(driver); // Locate Driver
@@ -32,6 +36,10 @@ public class DataBaseConnection {
         return connection;
     }
 
+    /**
+     * This method ends the connection to the MYSQL database and will output to the console when it no longer has connection
+     * to the data base
+     */
     public static void closeConnection() {
         try {
             connection.close();
@@ -40,15 +48,28 @@ public class DataBaseConnection {
             System.out.println("Error:" + e.getMessage());
         }
     }
+
+    /**
+     * @return getter for the connection utility
+     */
     public static java.sql.Connection getConnection(){
         return connection;
     }
 
     private static PreparedStatement preparedStatement;
 
+    /**
+     * @param connection sets prepared statement that is used for queries throughout this program
+     * @param query
+     * @throws SQLException
+     */
     public static void setPreparedStatement(Connection connection, String query) throws SQLException {
         preparedStatement = connection.prepareStatement(query);
     }
+
+    /**
+     * @return gets the prepared statement
+     */
     public static PreparedStatement getPreparedStatement(){
         return preparedStatement;
     }
