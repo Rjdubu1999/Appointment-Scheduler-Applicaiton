@@ -252,6 +252,9 @@ public class MainAppointmentController {
                 ObservableList<Appointment> getAllAppointments = AppointmentDAO.getAllAppointment();
                 getAllCustomers.stream().map(Customer::getCustomerID).forEach(storeCustomerIDs::add);
                 getAllUsers.stream().map(User::getUserID).forEach(storeUserIDs::add);
+                /**
+                 * formatting and setting up time selections in the combo boxes and date pickers
+                 */
                 LocalDate ldStart = StartDatePicker.getValue();
                 LocalDate ldEnd = EndDatePicker.getValue();
                 DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm");

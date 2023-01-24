@@ -115,7 +115,7 @@ public class AddAppointmentController   {
                 String appointmentStartTime = StartTime.getValue();
                 String endDateFormat = EndDate.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
                 String appointmentEndTime = EndField.getValue();
-               // System.out.println("thisDate + thisStart " + startDateFormat + " " + appointmentStartTime + ":00");
+                System.out.println("thisDate + thisStart " + startDateFormat + " " + appointmentStartTime + ":00");
                 String startUTC = convertTOUTC(startDateFormat + " " + appointmentStartTime + ":00");
                 String endUTC = convertTOUTC(endDateFormat + " " + appointmentEndTime + ":00");
                 LocalTime ltStart = LocalTime.parse(StartTime.getValue(), dateTimeFormatter);

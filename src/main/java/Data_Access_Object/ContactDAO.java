@@ -39,12 +39,12 @@ public class ContactDAO {
     }
 
     /**
-     * @param contactID This method selects all the information from the contacts table where the criteria of a name is met
+     * @param contactID This method selects all the information from the contacts table and gets the contact id of the contacts
      * @return
      * @throws SQLException
      */
     public static String locateContact(String contactID) throws SQLException{
-        PreparedStatement preparedStatement = DataBaseConnection.getConnection().prepareStatement("SELECT * FROM contacts WHERE Contact_Name = ?");
+        PreparedStatement preparedStatement = DataBaseConnection.getConnection().prepareStatement("SELECT * from contacts WHERE Contact_Name = ?");
         preparedStatement.setString(1, contactID);
         ResultSet resultSet = preparedStatement.executeQuery();
         while(resultSet.next()){

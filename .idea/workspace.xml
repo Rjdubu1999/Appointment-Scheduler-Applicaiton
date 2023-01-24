@@ -5,33 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0764dce-d9b8-485c-af9e-17f70aa847e5" name="Changes" comment="Doing JavaDocs now, and going to make sure everything is peachy">
+      <change afterPath="$PROJECT_DIR$/src/main/README.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MainReportsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MainReportsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MainScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MainScreenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/ModifyAppointmentController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/ModifyCustomerController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Data_Access_Object/AppointmentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Data_Access_Object/AppointmentDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AddAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AddAppointmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MainAppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MainAppointmentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Data_Access_Object/ContactDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Data_Access_Object/ContactDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Data_Access_Object/CountryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Data_Access_Object/CountryDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Data_Access_Object/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Data_Access_Object/CustomerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Data_Access_Object/FLD_DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Data_Access_Object/FLD_DAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Data_Access_Object/ReportDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Data_Access_Object/ReportDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Data_Access_Object/USERDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Data_Access_Object/USERDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Appointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Appointment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Contact.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Contact.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Country.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/DataBaseAppointment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/DataBaseCustomer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/DatabaseUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/DatabaseUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/FLD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/FLD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Report.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ReportByDates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ReportByDates.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/ReportByType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/ReportByType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/DataBaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/DataBaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/Logger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/Time.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/Time.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Language.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Language.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages/Languages_FR.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Languages/Languages_FR.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/MainScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/wilkinson_c195/MainScreen.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674499845813</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Doing JavaDocs now, and going to make sure everything is peachy">
+      <created>1674511321002</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1674511321002</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

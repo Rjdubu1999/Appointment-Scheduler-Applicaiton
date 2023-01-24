@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="328.0" prefWidth="499.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainScreenController">
+<AnchorPane prefHeight="280.0" prefWidth="499.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainScreenController">
 <children>
    <Label layoutX="140.0" layoutY="60.0" text="Appointment Scheduler">
       <font>
@@ -22,11 +22,6 @@
       </font>
    </Button>
    <Button layoutX="155.0" layoutY="185.0" mnemonicParsing="false" onAction="#onActionReportScreen" prefHeight="20.0" prefWidth="200.0" style="-fx-background-radius: 20;" text="Reports">
-      <font>
-         <Font size="13.0" />
-      </font>
-   </Button>
-   <Button layoutX="155.0" layoutY="220.0" mnemonicParsing="false" onAction="#onActionLogScreen" prefHeight="20.0" prefWidth="200.0" style="-fx-background-radius: 20;" text="Open Log">
       <font>
          <Font size="13.0" />
       </font>
