@@ -45,6 +45,7 @@ import static Utilities.Time.convertTOUTC;
  */
 public class MainAppointmentController {
 
+    @FXML private Button onActionModifyAppointment;
     @FXML
     private TextField AptIDField;
     @FXML
@@ -163,6 +164,7 @@ public class MainAppointmentController {
                 EndTimeCombo.setValue(String.valueOf(selectedAppointment.getEnd().toLocalTime()));
                 UserIDField.setText(String.valueOf(selectedAppointment.getUserID()));
                 ContactCombo.setValue(onScreenContactName);
+               // ContactField.setText(String.valueOf(selectedAppointment.getContactID()));
 
                 ObservableList<String> timesOfAppointments = FXCollections.observableArrayList();
 
@@ -239,46 +241,48 @@ public class MainAppointmentController {
      *              table, as well as the information in the MySQL database
      */
     @FXML
-    public void onActionModifyAppointment(ActionEvent event) {
+    void onActionModifyAppointment(ActionEvent event) {
         try {
-
             Connection connection = DataBaseConnection.openConnection();
 
             if (!TitleField.getText().isEmpty() && !DescriptionField.getText().isEmpty() && !LocationField.getText().isEmpty() && !TypeField.getText().isEmpty() && StartDatePicker.getValue() != null && EndDatePicker.getValue() != null && !StartTimeCombo.getValue().isEmpty() && !EndTimeCombo.getValue().isEmpty() && !CustomerIDField.getText().isEmpty()) {
                 ObservableList<Customer> getAllCustomers = CustomerDAO.getAllCustomers(connection);
-                ObservableList<Integer> storeCustomerIDs = FXCollections.observableArrayList();
+                ObservableList<Integer> customerIDIndex = FXCollections.observableArrayList();
                 ObservableList<USERDAO> getAllUsers = USERDAO.getAllUser();
-                ObservableList<Integer> storeUserIDs = FXCollections.observableArrayList();
+                ObservableList<Integer> UserIdIndex = FXCollections.observableArrayList();
                 ObservableList<Appointment> getAllAppointments = AppointmentDAO.getAllAppointment();
-                getAllCustomers.stream().map(Customer::getCustomerID).forEach(storeCustomerIDs::add);
-                getAllUsers.stream().map(User::getUserID).forEach(storeUserIDs::add);
-                /**
-                 * formatting and setting up time selections in the combo boxes and date pickers
-                 */
-                LocalDate ldStart = StartDatePicker.getValue();
+
+
+                getAllCustomers.stream().map(Customer::getCustomerID).forEach(customerIDIndex::add);
+                getAllUsers.stream().map(User::getUserID).forEach(UserIdIndex::add);
+                //formatting times and dates
                 LocalDate ldEnd = EndDatePicker.getValue();
-                DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm");
-                LocalTime ltStart = LocalTime.parse(StartTimeCombo.getValue(), dateTimeFormatter);
-                LocalTime ltEnd = LocalTime.parse(EndTimeCombo.getValue(), dateTimeFormatter);
-                LocalDateTime dtStart = LocalDateTime.of(ldStart, ltStart);
-                LocalDateTime dtEnd = LocalDateTime.of(ldEnd, ltEnd);
-                ZonedDateTime zdtStart = ZonedDateTime.of(dtStart, ZoneId.systemDefault());
-                ZonedDateTime zdtEnd = ZonedDateTime.of(dtEnd, ZoneId.systemDefault());
-                ZonedDateTime estConversionStart = zdtStart.withZoneSameInstant(ZoneId.of("America/New_York"));
-                ZonedDateTime estConversionEnd = zdtEnd.withZoneSameInstant(ZoneId.of("America/New_York"));
-                /**
-                 * Adding logic errors to the data input into the fields when a user wants to modify the selected appointment
-                 */
-                if (estConversionStart.toLocalDate().getDayOfWeek().getValue() == (DayOfWeek.SATURDAY.getValue()) || estConversionStart.toLocalDate().getDayOfWeek().getValue() == (DayOfWeek.SUNDAY.getValue()) || estConversionEnd.toLocalDate().getDayOfWeek().getValue() == (DayOfWeek.SATURDAY.getValue()) || estConversionEnd.toLocalDate().getDayOfWeek().getValue() == (DayOfWeek.SUNDAY.getValue())) {
-                    Alert alert = new Alert(Alert.AlertType.ERROR, "This day is outside of our (Monday-Friday) business operation days. ");
+                LocalDate LdStart = StartDatePicker.getValue();
+
+                DateTimeFormatter minHourFormat = DateTimeFormatter.ofPattern("HH:mm");
+
+                LocalTime ltStart = LocalTime.parse(StartTimeCombo.getValue(), minHourFormat);
+                LocalTime ltEnd = LocalTime.parse(EndTimeCombo.getValue(), minHourFormat);
+
+                LocalDateTime dateTimeStart = LocalDateTime.of(LdStart, ltStart);
+                LocalDateTime dateTimeEnd = LocalDateTime.of(ldEnd, ltEnd);
+
+                ZonedDateTime zonedDateTimeStart = ZonedDateTime.of(dateTimeStart, ZoneId.systemDefault());
+                ZonedDateTime zonedDateTimeEnd = ZonedDateTime.of(dateTimeEnd, ZoneId.systemDefault());
+
+                ZonedDateTime StartESTConversion = zonedDateTimeStart.withZoneSameInstant(ZoneId.of("America/New_York"));
+                ZonedDateTime EndEstConversion = zonedDateTimeEnd.withZoneSameInstant(ZoneId.of("America/New_York"));
+                //logic errors for appointment and date issues
+                if (StartESTConversion.toLocalDate().getDayOfWeek().getValue() == (DayOfWeek.SATURDAY.getValue()) || StartESTConversion.toLocalDate().getDayOfWeek().getValue() == (DayOfWeek.SUNDAY.getValue()) || EndEstConversion.toLocalDate().getDayOfWeek().getValue() == (DayOfWeek.SATURDAY.getValue()) || EndEstConversion.toLocalDate().getDayOfWeek().getValue() == (DayOfWeek.SUNDAY.getValue())) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "The day selected is outside of our business days (Monday-Friday)");
                     Optional<ButtonType> error = alert.showAndWait();
-                    System.out.println("The selected day is outside of operating days");
+                    System.out.println("The day is outside of our operational days. Please select a day between (Mon - Fri");
                     return;
                 }
 
-                if (estConversionStart.toLocalTime().isBefore(LocalTime.of(8, 0, 0)) || estConversionStart.toLocalTime().isAfter(LocalTime.of(22, 0, 0)) || estConversionEnd.toLocalTime().isBefore(LocalTime.of(8, 0, 0)) || estConversionEnd.toLocalTime().isAfter(LocalTime.of(22, 0, 0))) {
+                if (StartESTConversion.toLocalTime().isBefore(LocalTime.of(8, 0, 0)) || StartESTConversion.toLocalTime().isAfter(LocalTime.of(22, 0, 0)) || EndEstConversion.toLocalTime().isBefore(LocalTime.of(8, 0, 0)) || EndEstConversion.toLocalTime().isAfter(LocalTime.of(22, 0, 0))) {
                     System.out.println("time is outside of business hours");
-                    Alert alert = new Alert(Alert.AlertType.ERROR, "The selected appointment time is not within our business hours (8AM-10PM EST) " + estConversionStart.toLocalTime() + " - " + estConversionEnd.toLocalTime() + " EST");
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "The time you selected is outside of our (8am-10pm EST) business hours " + StartESTConversion.toLocalTime() + " - " + EndEstConversion.toLocalTime() + " EST");
                     Optional<ButtonType> error = alert.showAndWait();
                     return;
                 }
@@ -287,63 +291,71 @@ public class MainAppointmentController {
                 int appointmentID = Integer.parseInt(AptIDField.getText());
 
 
-                if (dtStart.isAfter(dtEnd)) {
-                    System.out.println("Check Time: Appointment has a start time before the end of appointment, check times.");
-                    Alert alert = new Alert(Alert.AlertType.ERROR, "Appointment start time is after end time");
-                    Optional<ButtonType> ERROR = alert.showAndWait();
+                if (dateTimeStart.isAfter(dateTimeEnd)) {
+                    System.out.println("Appointment has start time after end time");
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "Appointment time error: Start time is after the end time");
+                    Optional<ButtonType> error = alert.showAndWait();
                     return;
                 }
 
-                if (dtStart.isEqual(dtEnd)) {
-                    System.out.println("Check Time: Appointment can not have same start and end time");
+                if (dateTimeStart.isEqual(dateTimeEnd)) {
+                    System.out.println("Appointment has same start and end time");
                     Alert alert = new Alert(Alert.AlertType.ERROR, "Appointment has same start and end time");
                     Optional<ButtonType> error = alert.showAndWait();
                     return;
                 }
+
                 for (Appointment appointment : getAllAppointments) {
                     LocalDateTime checkStart = appointment.getStart();
                     LocalDateTime checkEnd = appointment.getEnd();
+
+
                     if ((newCustomerID == appointment.getCustomerID()) && (appointmentID != appointment.getAppointmentID()) &&
-                            (dtStart.isBefore(checkStart)) && (dtEnd.isAfter(checkEnd))) {
-                        Alert alert = new Alert(Alert.AlertType.ERROR, "This appointment overlaps the time of a difference existing appointments");
+                            (dateTimeStart.isBefore(checkStart)) && (dateTimeEnd.isAfter(checkEnd))) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR, "Time Error: Appointment overlaps with existing appointment.");
                         Optional<ButtonType> error = alert.showAndWait();
-                        System.out.println("Check Appointment: Appointment overlaps with existing appointment.");
+                        System.out.println("Appointment overlaps with existing appointment.");
                         return;
                     }
-                    if ((newCustomerID == appointment.getCustomerID()) && (appointmentID != appointment.getAppointmentID()) && (dtStart.isAfter(checkStart)) && (dtEnd.isBefore(checkEnd)))
-                    {
-                        Alert alert = new Alert(Alert.AlertType.ERROR, "Start time overlaps with existing appointment.");
+
+                    if ((newCustomerID == appointment.getCustomerID()) && (appointmentID != appointment.getAppointmentID()) &&
+                            (dateTimeStart.isAfter(checkStart)) && (dateTimeStart.isBefore(checkEnd))) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR, "Appointment time error: Overlap with start time of appointments");
                         Optional<ButtonType> error = alert.showAndWait();
-                        System.out.println("Check Appointment: Start time overlaps with existing appointment.");
+                        System.out.println("The start time overlaps with a different appointment");
                         return;
                     }
+
+
                     if (newCustomerID == appointment.getCustomerID() && (appointmentID != appointment.getAppointmentID()) &&
-                            (dtEnd.isAfter(checkStart)) && (dtEnd.isBefore(checkEnd))) {
-                        Alert alert = new Alert(Alert.AlertType.ERROR, "Overlap in Appointments");
+                            (dateTimeEnd.isAfter(checkStart)) && (dateTimeEnd.isBefore(checkEnd))) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR, "Appointment time error: Overlap with End time of a different appointment");
                         Optional<ButtonType> error = alert.showAndWait();
-                        System.out.println("Check Appointment: End of one appointment overlaps with a different existing appointment. Check Times.");
+                        System.out.println(" The End time overlaps with a different appointment.");
                         return;
                     }
                 }
-                String startDateFormat = StartDatePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-                String startTimeGet = StartTimeCombo.getValue();
-                String endDateFormat = EndDatePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-                String endTimeGet = EndTimeCombo.getValue();
-                String utcConversionStart = convertTOUTC(startDateFormat + " " + startTimeGet + ":00");
-                String utcConversionEnd = convertTOUTC(endDateFormat + " " + endTimeGet + ":00");
-                /**
-                 * updates the appointment information in the database with the update query
-                 */
-                String query = "UPDATE appointments SET Appointment_ID = ?, Title = ?, Description = ?, Location = ?, Type = ?, Start = ?, End = ?, Last_Update = ?, Last_Updated_By = ?, Customer_ID = ?, User_ID = ?, Contact_ID = ? WHERE Appointment_ID = ?";
-                DataBaseConnection.setPreparedStatement(DataBaseConnection.getConnection(), query);
+
+                String datePickerStart = StartDatePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                String startTime = StartTimeCombo.getValue();
+
+                String endDatePicker = EndDatePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                String endTime = EndTimeCombo.getValue();
+
+                String startUTC = convertTOUTC(datePickerStart + " " + startTime + ":00");
+                String endUTC = convertTOUTC(endDatePicker + " " + endTime + ":00");
+    //13 params due to not having the created by field
+                String updateQuery = "UPDATE appointments SET Appointment_ID = ?, Title = ?, Description = ?, Location = ?, Type = ?, Start = ?, End = ?, Last_Update = ?, Last_Updated_By = ?, Customer_ID = ?, User_ID = ?, Contact_ID = ? WHERE Appointment_ID = ?";
+
+                DataBaseConnection.setPreparedStatement(DataBaseConnection.getConnection(), updateQuery);
                 PreparedStatement preparedStatement = DataBaseConnection.getPreparedStatement();
                 preparedStatement.setInt(1, Integer.parseInt(AptIDField.getText()));
                 preparedStatement.setString(2, TitleField.getText());
                 preparedStatement.setString(3, DescriptionField.getText());
                 preparedStatement.setString(4, LocationField.getText());
                 preparedStatement.setString(5, TypeField.getText());
-                preparedStatement.setString(6, utcConversionStart);
-                preparedStatement.setString(7, utcConversionEnd);
+                preparedStatement.setString(6, startUTC);
+                preparedStatement.setString(7, endUTC);
                 preparedStatement.setTimestamp(8, Timestamp.valueOf(LocalDateTime.now()));
                 preparedStatement.setString(9, "admin");
                 preparedStatement.setInt(10, Integer.parseInt(CustomerIDField.getText()));
@@ -352,15 +364,16 @@ public class MainAppointmentController {
                 preparedStatement.setInt(13, Integer.parseInt(AptIDField.getText()));
                 preparedStatement.execute();
 
-                ObservableList<Appointment> allAppointmentsList = AppointmentDAO.getAllAppointment();
-                MainTableView.setItems(allAppointmentsList);
+                ObservableList<Appointment> AppointmentObservableList = AppointmentDAO.getAllAppointment();
+                MainTableView.setItems(AppointmentObservableList);
             }
 
         } catch (Exception exception) {
             exception.printStackTrace();
         }
-
     }
+
+
 
     /**
      * @param mouseEvent This method will load all of the appointments into the main table when this radio button is

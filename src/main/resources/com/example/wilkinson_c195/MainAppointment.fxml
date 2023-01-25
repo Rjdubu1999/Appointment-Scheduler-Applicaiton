@@ -26,22 +26,20 @@
             </font>
         </Label>
         <Button layoutX="14.0" layoutY="561.0" mnemonicParsing="false" onAction="#onActionAddAppointment" prefHeight="25.0" prefWidth="164.0" style="-fx-background-radius: 20;" text="Add New Appointment" />
-        <Button layoutX="201.0" layoutY="561.0" mnemonicParsing="false" onAction="#onActionModifyAppointment" prefHeight="25.0" prefWidth="164.0" style="-fx-background-radius: 20;" text="Modify Appointment" />
+        <Button fx:id="onActionModifyAppointment" layoutX="201.0" layoutY="561.0" mnemonicParsing="false" onAction="#onActionModifyAppointment" prefHeight="25.0" prefWidth="164.0" style="-fx-background-radius: 20;" text="Modify Appointment" />
         <Button layoutX="388.0" layoutY="561.0" mnemonicParsing="false" onAction="#onActionDeleteAppointment" prefHeight="25.0" prefWidth="164.0" style="-fx-background-radius: 20;" text="Delete Appointment" />
         <Button layoutX="726.0" layoutY="561.0" mnemonicParsing="false" onAction="#onActionBack" style="-fx-background-radius: 20;" text="Back" />
-      <TextField fx:id="AptIDField" layoutX="156.0" layoutY="392.0" />
+      <TextField fx:id="AptIDField" layoutX="156.0" layoutY="424.0" promptText="Auto Generated" text="ID is auto Generated" />
       <TextField fx:id="UserIDField" layoutX="652.0" layoutY="523.0" />
       <TextField fx:id="LocationField" layoutX="652.0" layoutY="424.0" />
       <TextField fx:id="TitleField" layoutX="652.0" layoutY="392.0" />
-      <TextField fx:id="TypeField" layoutX="156.0" layoutY="424.0" />
-      <TextField fx:id="DescriptionField" layoutX="156.0" layoutY="459.0" />
-      <TextField fx:id="CustomerIDField" layoutX="156.0" layoutY="490.0" />
-      <TextField fx:id="ContactField" layoutX="156.0" layoutY="523.0" />
-      <Label layoutX="37.0" layoutY="396.0" text="Appointment ID" />
-      <Label layoutX="37.0" layoutY="428.0" text="Appointment Type" />
-      <Label layoutX="37.0" layoutY="463.0" text="Apt Description" />
-      <Label layoutX="37.0" layoutY="494.0" text="Customer ID" />
-      <Label layoutX="37.0" layoutY="527.0" text="Contact ID" />
+      <TextField fx:id="TypeField" layoutX="156.0" layoutY="459.0" promptText="Click an appointment" />
+      <TextField fx:id="DescriptionField" layoutX="156.0" layoutY="490.0" promptText="To fill all fields" />
+      <TextField fx:id="CustomerIDField" layoutX="156.0" layoutY="523.0" />
+      <Label layoutX="38.0" layoutY="428.0" text="Appointment ID" />
+      <Label layoutX="37.0" layoutY="463.0" text="Appointment Type" />
+      <Label layoutX="39.0" layoutY="494.0" text="Apt Description" />
+      <Label layoutX="37.0" layoutY="527.0" text="Customer ID" />
       <Label layoutX="552.0" layoutY="396.0" text="Appointment Title" />
       <Label layoutX="529.0" layoutY="428.0" text="Appointment Location" />
       <Label layoutX="579.0" layoutY="463.0" text="Start Time" />

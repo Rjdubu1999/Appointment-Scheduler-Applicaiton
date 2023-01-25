@@ -27,7 +27,7 @@ public class USERDAO extends User {
         super();
     }
 
-   /** public static int userValidation(String username, String password){
+    public static int userValidation(String username, String password){
         try{
             String query = "SELECT * FROM users WHERE User_Name='" + username + "' AND password='" + password + "'";
             PreparedStatement preparedStatement = DataBaseConnection.getConnection().prepareStatement(query);
@@ -39,7 +39,7 @@ public class USERDAO extends User {
         }catch (SQLException sqlException){
             sqlException.printStackTrace();
         } return -1;
-    } **/
+    }
 
     /**
      * gets all user data from the user table in the MYSQL DATABASE

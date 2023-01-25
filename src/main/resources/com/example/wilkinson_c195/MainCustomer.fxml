@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane fx:id="customerAnchorPane" prefHeight="477.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainCustomerController">
@@ -21,13 +22,13 @@
             <TableColumn fx:id="FirstLevelColumn" prefWidth="119.0" text="First_Level_Division" />
         </columns>
       </TableView>
-      <ButtonBar layoutX="235.0" layoutY="430.0" prefHeight="40.0" prefWidth="353.0">
+      <ButtonBar layoutX="43.0" layoutY="423.0" prefHeight="40.0" prefWidth="605.0">
         <buttons>
           <Button mnemonicParsing="false" onAction="#onActionAdd" style="-fx-background-radius: 20;" text="Add" />
             <Button mnemonicParsing="false" onAction="#onActionModify" style="-fx-background-radius: 20;" text="Modify" />
+            <Button mnemonicParsing="false" onAction="#onActionSave" style="-fx-background-radius: 20;" text="Save" />
             <Button mnemonicParsing="false" onAction="#onActionDelete" style="-fx-background-radius: 20;" text="Delete" />
             <Button layoutX="288.0" layoutY="18.0" mnemonicParsing="false" onAction="#onActionBack" style="-fx-background-radius: 20;" text="Back" />
-            <Button mnemonicParsing="false" onAction="#onActionSave" style="-fx-background-radius: 20;" text="Save" />
         </buttons>
       </ButtonBar>
       <Label layoutX="57.0" layoutY="305.0" text="ID" />
@@ -44,5 +45,16 @@
       <TextField fx:id="PostalCodeField" layoutX="606.0" layoutY="346.0" prefHeight="25.0" prefWidth="75.0" />
       <ComboBox fx:id="CountryCombo" layoutX="109.0" layoutY="392.0" onAction="#FillCountryCombo" prefHeight="25.0" prefWidth="156.0" />
       <ComboBox fx:id="StateCombo" layoutX="566.0" layoutY="392.0" prefHeight="25.0" prefWidth="156.0" />
+      <Line endX="-31.0" endY="2.0" layoutX="391.0" layoutY="405.0" startX="-41.0" startY="28.0" />
+      <Label layoutX="305.0" layoutY="389.0" prefHeight="15.0" prefWidth="172.0" text="Highlight Customer Then Click Modify ">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label layoutX="367.0" layoutY="406.0" text="Then Click Save">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

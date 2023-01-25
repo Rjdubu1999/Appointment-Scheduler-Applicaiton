@@ -6,7 +6,7 @@ Author: Ryan Wilkinson
 Contact: rwilk75@wgu.edu
 Student Application version: Version 1.0
 MySQL Connection Driver: mysql-connector-java--8.0.25
-JavaFX Version: JavaFX-SDK-11
+JavaFX Version: JavaFX-SDK-17.0.1
 
 Intellij:IntelliJ IDEA 2021.1.3 (Community Edition)
          Build #IC-211.7628.21, built on June 30, 2021

@@ -23,7 +23,7 @@
          </font>
       </Label>
       <TextField fx:id="UsernameTextField" layoutX="250.0" layoutY="110.0" />
-      <Button fx:id="LogInButton" layoutX="197.0" layoutY="219.0" mnemonicParsing="false" onAction="#OnActionLogin" style="-fx-background-radius: 20;" text="Login" />
+      <Button fx:id="LogInButton" layoutX="197.0" layoutY="219.0" mnemonicParsing="false" onAction="#OnActionLogin" onMouseClicked="#AppointmentAlert" style="-fx-background-radius: 20;" text="Login" />
       <AnchorPane layoutX="24.0" layoutY="253.0" prefHeight="162.0" prefWidth="463.0">
          <children>
             <Label fx:id="AnchorPaneLanguage" layoutX="180.0" layoutY="122.0" mnemonicParsing="false" style="-fx-background-radius: 20;" />

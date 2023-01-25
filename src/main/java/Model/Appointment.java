@@ -92,7 +92,7 @@ public class Appointment {
      * @return
      */
     public LocalDateTime getStart(){
-        System.out.println("Appointment Starts At :" + start);
+        System.out.println("Appointment Starts At: " + start);
         return  start;
     }
 
@@ -101,7 +101,7 @@ public class Appointment {
      * @return
      */
     public LocalDateTime getEnd(){
-        System.out.println("Appointment End At :" + start);
+        System.out.println("Appointment End At: " + start);
         return end;
     }
 

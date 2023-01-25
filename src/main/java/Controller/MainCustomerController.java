@@ -96,6 +96,7 @@ public class MainCustomerController implements Initializable {
         });
         StateCombo.setItems(FLDNames);
         customerTableView.setItems(allCustomer);
+        IDField.setEditable(false);
 
     } catch (Exception exception) {
         exception.printStackTrace();
@@ -111,14 +112,46 @@ public class MainCustomerController implements Initializable {
             Connection connection = DataBaseConnection.openConnection();
             if (!NameField.getText().isEmpty() || !AddressField.getText().isEmpty() ||
                     !PostalCodeField.getText().isEmpty() || !PhoneField.getText().isEmpty() || !CountryCombo.getValue().isEmpty() || !StateCombo.getValue().isEmpty()) {
-                Integer newCustomerID = (int) (Math.random() * 200);
+                Integer newCustomerID = (int) (Math.random() * 25);
                 IDField.setText(newCustomerID.toString());
+
 
                 int FLDName = 0;
                 for (FLD_DAO fld : FLD_DAO.getAllFLD()) {
                     if(StateCombo.getSelectionModel().getSelectedItem().equals(fld.getDivisionName())){
                         FLDName = fld.getDivision_ID();
                     }
+                    if(NameField.getText().isEmpty()){
+                        Alert alert = new Alert(Alert.AlertType.ERROR, "Name field is blank please fill in");
+                        alert.showAndWait();
+                        return;
+                    }
+                    if(AddressField.getText().isEmpty()){
+                        Alert alert = new Alert(Alert.AlertType.ERROR, " Address is blank please fill in");
+                        alert.showAndWait();
+                        return;
+                    }
+                    if(PostalCodeField.getText().isEmpty()){
+                        Alert alert = new Alert(Alert.AlertType.ERROR, " Postal code is blank please fill in");
+                        alert.showAndWait();
+                        return;
+                    }
+                    if(PhoneField.getText().isEmpty()){
+                        Alert alert = new Alert(Alert.AlertType.ERROR, "Phone number is blank please fill in");
+                        alert.showAndWait();
+                        return;
+                    }
+                 //   if(CountryCombo.getValue().isEmpty()){
+                   //     Alert alert = new Alert(Alert.AlertType.ERROR, "Country selection is empty");
+                     //   alert.showAndWait();
+                       // return;
+                  //  }
+                   // if(StateCombo.getValue().isEmpty()){
+                   //     Alert alert = new Alert(Alert.AlertType.ERROR, " is blank please fill in");
+                     //   alert.showAndWait();
+                       // return;}
+
+
 /**
  * Insert query to input the information from the fields into the database
  */

@@ -20,7 +20,11 @@ public class User {
     public int userID;
     public String username;
     public String password;
-
+    public User(){
+        this.userID = userID;
+        this.username = username;
+        this.password = password;
+    }
 
     /**
      * @return gets username
@@ -36,11 +40,7 @@ public class User {
         this.username = username;
     }
 
-    public User(){ /**
-        this.userID = userID;
-        this.username = username;
-        this.password = password;   **/
-    }
+
 
     /**
      * @return gets user id

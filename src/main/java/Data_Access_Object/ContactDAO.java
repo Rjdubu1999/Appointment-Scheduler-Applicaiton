@@ -23,7 +23,7 @@ public class ContactDAO {
      * @throws SQLException
      */
     public static ObservableList<Contact> getAllContacts() throws SQLException{
-        ObservableList<Contact> contactObservableList = FXCollections.observableArrayList();
+        ObservableList<Contact> contacts = FXCollections.observableArrayList();
         String query = "SELECT * from contacts";
         PreparedStatement preparedStatement = DataBaseConnection.getConnection().prepareStatement(query);
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -32,10 +32,10 @@ public class ContactDAO {
             String contactName = resultSet.getString("Contact_Name");
             String contactEmail = resultSet.getString("Email");
             Contact contact = new Contact(contactID, contactName, contactEmail);
-            contactObservableList.add(contact);
+            contacts.add(contact);
 
         }
-        return contactObservableList;
+        return contacts;
     }
 
     /**
