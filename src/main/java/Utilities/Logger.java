@@ -15,7 +15,7 @@ import java.time.ZonedDateTime;
  * A logger utility which will be used to display all of the logins for this program into a text file
  */
 public class Logger {
-    private static final String FILENAME = "log.txt";
+    private static final String FILENAME = "login_activity.txt";
 
     public Logger(){}
 

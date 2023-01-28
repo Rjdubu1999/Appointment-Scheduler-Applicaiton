@@ -144,7 +144,9 @@ public class MainAppointmentController {
                 ObservableList<Contact> contactObservableList = ContactDAO.getAllContacts();
                 ObservableList<String> contactNameList = FXCollections.observableArrayList();
                 String onScreenContactName = "";
-
+                /**
+                 * This lambda expression will be used to fill Contact name list with the contact data
+                 */
                 contactObservableList.forEach(contact -> contactNameList.add(contact.getContactName()));
                 ContactCombo.setItems(contactNameList);
                 for (Contact contact : contactObservableList) {
@@ -221,7 +223,7 @@ public class MainAppointmentController {
             Connection connection = DataBaseConnection.openConnection();
             int deleteAptId = MainTableView.getSelectionModel().getSelectedItem().getAppointmentID();
             String deleteAptType = MainTableView.getSelectionModel().getSelectedItem().getAppointmentType();
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are You Sure You Want To Delete The Selected Appointment?");
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are You Sure You Want To Delete Appointment Titled '" + deleteAptType + "'?");
             Optional<ButtonType> confirm = alert.showAndWait();
             if (confirm.isPresent() && confirm.get() == ButtonType.OK) {
                 AppointmentDAO.deleteAppointment(deleteAptId, connection);
@@ -290,6 +292,11 @@ public class MainAppointmentController {
                 int newCustomerID = Integer.parseInt(CustomerIDField.getText());
                 int appointmentID = Integer.parseInt(AptIDField.getText());
 
+                if(overlapping(dateTimeStart, dateTimeEnd,newCustomerID )) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "Overlapping appointment times");
+                    alert.showAndWait();
+                    return;
+                }
 
                 if (dateTimeStart.isAfter(dateTimeEnd)) {
                     System.out.println("Appointment has start time after end time");
@@ -312,29 +319,32 @@ public class MainAppointmentController {
 
                     if ((newCustomerID == appointment.getCustomerID()) && (appointmentID != appointment.getAppointmentID()) &&
                             (dateTimeStart.isBefore(checkStart)) && (dateTimeEnd.isAfter(checkEnd))) {
-                        Alert alert = new Alert(Alert.AlertType.ERROR, "Time Error: Appointment overlaps with existing appointment.");
+                        Alert alert = new Alert(Alert.AlertType.ERROR, "Appointment overlaps with a different appointment.");
                         Optional<ButtonType> error = alert.showAndWait();
-                        System.out.println("Appointment overlaps with existing appointment.");
+                        System.out.println("Appointment overlaps with another appointment.");
                         return;
                     }
 
                     if ((newCustomerID == appointment.getCustomerID()) && (appointmentID != appointment.getAppointmentID()) &&
                             (dateTimeStart.isAfter(checkStart)) && (dateTimeStart.isBefore(checkEnd))) {
-                        Alert alert = new Alert(Alert.AlertType.ERROR, "Appointment time error: Overlap with start time of appointments");
+                        Alert alert = new Alert(Alert.AlertType.ERROR, "Start time overlaps with another appointment.");
                         Optional<ButtonType> error = alert.showAndWait();
-                        System.out.println("The start time overlaps with a different appointment");
+                        System.out.println("Start time overlaps with another appointment.");
                         return;
                     }
+
 
 
                     if (newCustomerID == appointment.getCustomerID() && (appointmentID != appointment.getAppointmentID()) &&
                             (dateTimeEnd.isAfter(checkStart)) && (dateTimeEnd.isBefore(checkEnd))) {
-                        Alert alert = new Alert(Alert.AlertType.ERROR, "Appointment time error: Overlap with End time of a different appointment");
+                        Alert alert = new Alert(Alert.AlertType.ERROR, "End time overlaps with another appointment.");
                         Optional<ButtonType> error = alert.showAndWait();
-                        System.out.println(" The End time overlaps with a different appointment.");
+                        System.out.println("End time overlaps with another appointment.");
                         return;
                     }
+
                 }
+
 
                 String datePickerStart = StartDatePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
                 String startTime = StartTimeCombo.getValue();
@@ -419,6 +429,7 @@ public class MainAppointmentController {
                 MonthlyRadio.setSelected(false);
             }
 
+
         }catch (Exception exception){
             exception.printStackTrace();
         }
@@ -431,25 +442,49 @@ public class MainAppointmentController {
      * @throws SQLException
      */
     public void OnMonthlyRadioAptsClicked(MouseEvent mouseEvent) throws SQLException {
+
+
+
         try{
             ObservableList<Appointment> appointmentObservableList = AppointmentDAO.getAllAppointment();
             ObservableList<Appointment> monthlyAppointments = FXCollections.observableArrayList();
-            LocalDateTime monthStart = LocalDateTime.now().minusMonths(1);
-            LocalDateTime monthEnd = LocalDateTime.now().plusMonths(1);
-            if(appointmentObservableList != null){
-                appointmentObservableList.forEach(appointment -> {
-                    if(appointment.getEnd().isAfter(monthStart) && appointment.getEnd().isBefore(monthEnd)){
-                        monthlyAppointments.add(appointment);
-                    }
-                    MainTableView.setItems(monthlyAppointments);
-                });
+            for(Appointment appointment : appointmentObservableList){
+                if(appointment.getStart().getMonth() == LocalDate.now().getMonth()){
+                    monthlyAppointments.add(appointment);
+                }
+                MainTableView.setItems(monthlyAppointments);
+           // LocalDateTime monthStart = LocalDateTime.now().minusMonths(1);
+         //   LocalDateTime monthEnd = LocalDateTime.now().plusMonths(1);
+           // if(appointmentObservableList != null){
+            //    appointmentObservableList.forEach(appointment -> {
+               ///     if( appointment.getEnd().isAfter(monthStart) &&  appointment.getEnd().isBefore(monthEnd) ){
+                //        monthlyAppointments.add(appointment);
+                 //   }
+                 //   MainTableView.setItems(monthlyAppointments);
+               // });
             }
             if(MonthlyRadio.isSelected()){
                 AllAptRadio.setSelected(false);
                 WeeklyRadio.setSelected(false);
             }
+
         }catch (Exception exception){
             exception.printStackTrace();
         }
     }
+    public static boolean overlapping(LocalDateTime localDateTimeStart, LocalDateTime localDateTimeEnd, int customerID )throws SQLException{
+        ObservableList<Appointment> appointmentObservableList = FXCollections.observableArrayList();
+        for(Appointment appointment : AppointmentDAO.getAllAppointment()){
+            if(appointment.getCustomerID() == customerID){
+                appointmentObservableList.add(appointment);
+            }
+        }
+        for(Appointment appointment: appointmentObservableList){
+            if((appointment.getStart().isBefore(localDateTimeEnd) && appointment.getStart().isAfter(localDateTimeStart)) || (appointment.getEnd().isBefore(localDateTimeEnd) && (appointment.getEnd().isAfter(localDateTimeStart)))){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

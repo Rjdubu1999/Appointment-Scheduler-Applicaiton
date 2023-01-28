@@ -99,6 +99,7 @@ public class AddAppointmentController   {
                 ZonedDateTime StartESTConversion = zonedDateTimeStart.withZoneSameInstant(ZoneId.of("America/New_York"));
                 ZonedDateTime EndEstConversion = zonedDateTimeEnd.withZoneSameInstant(ZoneId.of("America/New_York"));
                     //setting up logical errors so that errors are displayed based upon the times and dates set for appointments
+
                 if (StartESTConversion.toLocalDate().getDayOfWeek().getValue() == (DayOfWeek.SATURDAY.getValue()) || StartESTConversion.toLocalDate().getDayOfWeek().getValue() == (DayOfWeek.SUNDAY.getValue()) || EndEstConversion.toLocalDate().getDayOfWeek().getValue() == (DayOfWeek.SATURDAY.getValue()) || EndEstConversion.toLocalDate().getDayOfWeek().getValue() == (DayOfWeek.SUNDAY.getValue())) {
                     Alert alert = new Alert(Alert.AlertType.ERROR, "The day selected is outside of our business days (Monday-Friday)");
                     Optional<ButtonType> error = alert.showAndWait();
@@ -113,8 +114,13 @@ public class AddAppointmentController   {
                     return;
                 }
 
-                int newAppointmentID = Integer.parseInt(String.valueOf((int) (Math.random() * 50)));
+                int newAppointmentID = Integer.parseInt(String.valueOf((int) (Math.random() * 125)));
                 int customerID = Integer.parseInt(CustomerID.getText());
+                if(overlapping(dtStart, dtEnd,customerID )) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "Overlapping appointment times");
+                    alert.showAndWait();
+                    return;
+                }
 
 
                 if (dtStart.isAfter(dtEnd)) {
@@ -133,7 +139,40 @@ public class AddAppointmentController   {
 
                 for (Appointment appointment : getAllAppointments) {
                     LocalDateTime checkStart = appointment.getStart();
-                    LocalDateTime checkEnd = appointment.getEnd();
+                   LocalDateTime checkEnd = appointment.getEnd();
+
+
+                    if ((customerID == appointment.getCustomerID()) && (newAppointmentID != appointment.getAppointmentID()) &&
+                            (dtStart.isBefore(checkStart)) && (dtEnd.isAfter(checkEnd))) {
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Appointment overlaps with existing appointment.");
+                        Optional<ButtonType> confirmation = alert.showAndWait();
+                        System.out.println("Appointment overlaps with existing appointment.");
+                        return;
+                    }
+
+                    if ((customerID == appointment.getCustomerID()) && (newAppointmentID != appointment.getAppointmentID()) &&
+//                            Clarification on isEqual is that this does not count as an overlapping appointment
+//                            (dateTimeStart.isEqual(checkStart) || dateTimeStart.isAfter(checkStart)) &&
+//                            (dateTimeStart.isEqual(checkEnd) || dateTimeStart.isBefore(checkEnd))) {
+                            (dtStart.isAfter(checkStart)) && (dtStart.isBefore(checkEnd))) {
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Start time overlaps with existing appointment.");
+                        Optional<ButtonType> confirmation = alert.showAndWait();
+                        System.out.println("Start time overlaps with existing appointment.");
+                        return;
+                    }
+
+
+
+                    if (customerID == appointment.getCustomerID() && (newAppointmentID != appointment.getAppointmentID()) &&
+//                            Clarification on isEqual is that this does not count as an overlapping appointment
+//                            (dateTimeEnd.isEqual(checkStart) || dateTimeEnd.isAfter(checkStart)) &&
+//                            (dateTimeEnd.isEqual(checkEnd) || dateTimeEnd.isBefore(checkEnd)))
+                            (dtEnd.isAfter(checkStart)) && (dtEnd.isBefore(checkEnd))) {
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "End time overlaps with existing appointment.");
+                        Optional<ButtonType> confirmation = alert.showAndWait();
+                        System.out.println("End time overlaps with existing appointment.");
+                        return;
+                    }
 
 
                     if ((customerID == appointment.getCustomerID()) && (newAppointmentID != appointment.getAppointmentID()) &&
@@ -144,7 +183,7 @@ public class AddAppointmentController   {
                         return;
                     }
 
-                    if ((customerID == appointment.getCustomerID()) && (newAppointmentID != appointment.getAppointmentID()) &&
+                      if ((customerID == appointment.getCustomerID()) && (newAppointmentID != appointment.getAppointmentID()) &&
                             (dtStart.isAfter(checkStart)) && (dtStart.isBefore(checkEnd))) {
                         Alert alert = new Alert(Alert.AlertType.ERROR, "Appointment time error: Overlap with start time of appointments");
                         Optional<ButtonType> error = alert.showAndWait();
@@ -158,7 +197,7 @@ public class AddAppointmentController   {
                         Alert alert = new Alert(Alert.AlertType.ERROR, "Appointment time error: Overlap with End time of a different appointment");
                         Optional<ButtonType> error = alert.showAndWait();
                         System.out.println(" The End time overlaps with a different appointment.");
-                        return;
+                       return;
                     }
                 }
 
@@ -195,7 +234,9 @@ public class AddAppointmentController   {
                 preparedStatement.setInt(14,Integer.parseInt(ContactDAO.locateContact(UserID.getText())));
 
                 preparedStatement.execute();
+
             }
+
             //Blank field errors
             if(Title.getText().isEmpty()){
                 Alert alert = new Alert(Alert.AlertType.ERROR, " Title field is blank.");
@@ -286,4 +327,20 @@ public class AddAppointmentController   {
 
 
     }
+
+    public static boolean overlapping(LocalDateTime localDateTimeStart, LocalDateTime localDateTimeEnd, int customerID )throws SQLException{
+        ObservableList<Appointment> appointmentObservableList = FXCollections.observableArrayList();
+        for(Appointment appointment : AppointmentDAO.getAllAppointment()){
+            if(appointment.getCustomerID() == customerID){
+                appointmentObservableList.add(appointment);
+            }
+        }
+        for(Appointment appointment: appointmentObservableList){
+            if((appointment.getStart().isBefore(localDateTimeEnd) && appointment.getStart().isAfter(localDateTimeStart)) || (appointment.getEnd().isBefore(localDateTimeEnd) && (appointment.getEnd().isAfter(localDateTimeStart)))){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

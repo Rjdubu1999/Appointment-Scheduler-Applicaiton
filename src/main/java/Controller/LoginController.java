@@ -21,7 +21,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Locale;
+import java.util.MissingResourceException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -33,6 +35,9 @@ import java.util.ResourceBundle;
  * MySQL database. If the incorrect information is entered into the log in fields then the login will deny them access.
  */
 public class LoginController implements Initializable {
+    @FXML private TextField LocationField;
+    @FXML private TextField LanguageField;
+    @FXML private Label Title;
     @FXML
     private Label AnchorPaneLanguage;
     @FXML
@@ -69,7 +74,8 @@ public class LoginController implements Initializable {
      *              the application
      * @throws IOException
      */
-    public void OnActionLogin(ActionEvent event) throws SQLException, IOException {
+    public void OnActionLogin(ActionEvent event) throws SQLException, IOException, Exception {
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("Languages/Language", Locale.getDefault());
         try {
 
             String username = UsernameTextField.getText();
@@ -138,17 +144,28 @@ public class LoginController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle languages) {
-        Locale locale = Locale.getDefault();
-        languages = ResourceBundle.getBundle("Languages/Language", locale);
-        UsernameLabel.setText(languages.getString("username"));
-        PasswordLabel.setText(languages.getString("password"));
-        LogInButton.setText(languages.getString("login"));
-        AnchorPaneMessage.setText(languages.getString("message"));
-        AnchorPaneLanguage.setText(languages.getString("language"));
-        loginErrorTitle = languages.getString("errortitle");
-        loginErrorHeader = languages.getString("errorheader");
-        loginErrorText = languages.getString("errortext");
+       // try {
+            Locale locale = Locale.getDefault();
+            Locale.setDefault(locale);
+            ZoneId zoneId = ZoneId.systemDefault();
+            LocationField.setText(String.valueOf(zoneId));
+            languages = ResourceBundle.getBundle("Languages/Language", Locale.getDefault());
+            UsernameLabel.setText(languages.getString("username"));
+            PasswordLabel.setText(languages.getString("password"));
+            LogInButton.setText(languages.getString("login"));
+            AnchorPaneMessage.setText(languages.getString("message"));
+            LanguageField.setText(languages.getString("language"));
+            AnchorPaneLanguage.setText(languages.getString("languageLabel"));
+            loginErrorTitle = languages.getString("errortitle");
+            loginErrorHeader = languages.getString("errorheader");
+            loginErrorText = languages.getString("errortext");
+            Title.setText(languages.getString("title"));
 
+      //  }catch (MissingResourceException missingResourceException){
+       //     System.out.println("Exception ->" + missingResourceException);
+      //  }catch (Exception exception){
+       //     exception.printStackTrace();
+      //  }
     }
 
     /**
